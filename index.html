@@ -1,0 +1,686 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casa Madrid</title><style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#080c12;color:#eef3f8;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;padding-bottom:40px}
+.w{max-width:660px;margin:auto;padding:12px}
+h1{font-size:18px;margin:0 0 2px}.sub{color:#8b97a8;font-size:12px;margin-bottom:10px}
+.c{background:#101823;border:1px solid #1e2b3d;border-radius:14px;padding:14px;margin-top:10px}
+textarea,input,select{width:100%;background:#0b1320;border:1px solid #22304a;color:#eef3f8;border-radius:10px;padding:11px;font-size:15px;outline:none;font-family:inherit}
+textarea{min-height:110px;resize:vertical}
+label{display:block;font-size:11px;color:#8b97a8;margin-bottom:3px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.mt{margin-top:8px}
+button{border:0;border-radius:10px;padding:13px;font-weight:800;font-size:15px;background:#1e2b3d;color:#eef3f8;cursor:pointer}
+button.p{background:#4f8cff;color:#04101f}button:active{transform:scale(.98)}
+.bt{display:grid;grid-template-columns:2fr 1fr;gap:8px;margin-top:10px}
+.hero{border-radius:16px;padding:18px;text-align:center;margin-top:12px}
+.hero.go{background:linear-gradient(160deg,#0e3a24,#0a2618);border:2px solid #3fd383}
+.hero.mid{background:linear-gradient(160deg,#3a2c0c,#241c08);border:2px solid #f5b23a}
+.hero.no{background:linear-gradient(160deg,#3a1414,#240d0d);border:2px solid #ff6b6b}
+.hero .act{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;opacity:.85}
+.hero.go .act{color:#3fd383}.hero.mid .act{color:#f5b23a}.hero.no .act{color:#ff6b6b}
+.hero .big{font-size:36px;font-weight:900;margin:6px 0 2px;letter-spacing:-1px}
+.hero .sm{font-size:13px;color:#b9c4d2;line-height:1.45}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.n{background:#0b1320;border:1px solid #1e2b3d;border-left:4px solid #4f8cff;border-radius:10px;padding:11px;cursor:pointer;position:relative}
+.n:active{background:#111c2c}
+.n.g{border-left-color:#3fd383}.n.y{border-left-color:#f5b23a}.n.r{border-left-color:#ff6b6b}
+.n .lab{font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#8b97a8;padding-right:16px}
+.n .val{font-size:20px;font-weight:800;margin:3px 0 1px;font-variant-numeric:tabular-nums}
+.n.g .val{color:#3fd383}.n.y .val{color:#f5b23a}.n.r .val{color:#ff6b6b}
+.n .hint{font-size:11px;color:#8b97a8;line-height:1.35}
+.n .q{position:absolute;top:9px;right:9px;width:16px;height:16px;border-radius:50%;background:#22304a;color:#8b97a8;font-size:11px;text-align:center;line-height:16px;font-weight:700}
+.n .exp{display:none;margin-top:9px;padding-top:9px;border-top:1px solid #1e2b3d;font-size:12px;line-height:1.6;color:#b9c4d2}
+.n.open .exp{display:block}.n.open .q{background:#4f8cff;color:#04101f}
+.n .exp b{color:#eef3f8}
+.n .exp .f{font-family:ui-monospace,Menlo,monospace;font-size:11px;background:#080f1a;padding:7px 9px;border-radius:6px;margin:6px 0;display:block;color:#9fd0ff;white-space:pre}
+.al{border-radius:10px;padding:11px 12px;margin-top:8px;font-size:13px;line-height:1.5;border-left:4px solid}
+.al.r{background:#210e0e;border-color:#ff6b6b}.al.y{background:#241c08;border-color:#f5b23a}
+.al.g{background:#0a2618;border-color:#3fd383}.al.b{background:#0b1626;border-color:#4f8cff}
+.al b{display:block;margin-bottom:2px}.al span{color:#b9c4d2}
+.sec{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#8b97a8;font-weight:800;margin:16px 0 0}
+.ask{background:#0b1320;border:1px solid #1e2b3d;border-radius:10px;padding:10px 12px;margin-top:6px;font-size:13px;line-height:1.5}
+.ask b{color:#7fb0ff}
+.row{display:flex;justify-content:space-between;gap:10px;padding:8px 10px;background:#0b1320;border:1px solid #1e2b3d;border-radius:9px;margin-top:5px;font-size:13px}
+.row span{color:#8b97a8;text-align:right;font-variant-numeric:tabular-nums}
+details summary{list-style:none;cursor:pointer;font-size:12px;font-weight:700;color:#8b97a8}
+details summary::-webkit-details-marker{display:none}
+.tag{display:inline-block;font-size:10px;padding:2px 6px;border-radius:4px;background:#22304a;color:#8b97a8;margin-left:5px}
+.bar{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.pill{font-size:11px;padding:4px 8px;border-radius:12px;background:#16243a;color:#9fb4cc;border:1px solid #22304a}
+.pill.g{background:#0d2a1b;color:#3fd383;border-color:#1e5c3c}
+.pill.y{background:#2a2109;color:#f5b23a;border-color:#5c4a1a}
+.pill.r{background:#2a1010;color:#ff6b6b;border-color:#5c2020}
+.rk{background:#0b1320;border:1px solid #1e2b3d;border-radius:9px;padding:9px 11px;margin-top:6px;font-size:12px;line-height:1.5;color:#b9c4d2}
+.rk b{color:#7fb0ff}
+
+.fact-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px}.fact{background:#0b1320;border:1px solid #1e2b3d;border-radius:9px;padding:9px 10px;font-size:12px;line-height:1.45}.fact b{display:block;color:#7fb0ff;margin-bottom:2px}.fact span{color:#b9c4d2}.fact.hot{border-color:#765718;background:#241c08}.fact.hot b{color:#f5b23a}.fact.risk{border-color:#713131;background:#210e0e}.fact.risk b{color:#ff8080}.zonebox{background:#0b1626;border:1px solid #253c5c;border-radius:11px;padding:12px;margin-top:8px;font-size:12px;line-height:1.6;color:#b9c4d2}.zonebox strong{color:#eef3f8}.zonebox .ztitle{font-size:14px;font-weight:800;color:#7fb0ff;margin-bottom:5px}.moneycall{background:#241c08;border:2px solid #f5b23a;border-radius:11px;padding:12px;margin-top:8px}.moneycall b{color:#f5b23a;font-size:14px}.moneycall span{display:block;color:#d0d8e3;font-size:12px;line-height:1.55;margin-top:4px}
+
+.socio{background:#10131d;border:1px solid #33405a;border-radius:12px;padding:12px;margin-top:8px}.socio-title{font-size:15px;font-weight:900;margin-bottom:4px}.socio-sub{font-size:12px;color:#b9c4d2;line-height:1.55}.socio-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}.socio-k{background:#0b1320;border:1px solid #1e2b3d;border-radius:8px;padding:9px}.socio-k .l{font-size:10px;color:#8b97a8;text-transform:uppercase;letter-spacing:.5px}.socio-k .v{font-size:17px;font-weight:800;margin-top:2px}.socio-k .x{font-size:10px;color:#8b97a8;margin-top:2px}.socio-note{font-size:11px;line-height:1.5;color:#8b97a8;margin-top:8px}.socio.rich{border-color:#927333;background:#211b0d}.socio.rich .socio-title{color:#ffd875}.socio.mid{border-color:#315d86;background:#0b1725}.socio.mid .socio-title{color:#7fb9f4}.socio.low{border-color:#765018;background:#211708}.socio.low .socio-title{color:#f5b23a}
+
+.step{margin:18px 0 7px;padding:8px 10px;border-radius:9px;background:#162238;border:1px solid #263a59;color:#b9d2f1;font-size:12px;font-weight:900;letter-spacing:.7px;text-transform:uppercase}.finalbox{border-radius:14px;padding:15px;margin-top:12px;border:2px solid}.finalbox.go{background:#0a2618;border-color:#3fd383}.finalbox.mid{background:#241c08;border-color:#f5b23a}.finalbox.no{background:#210e0e;border-color:#ff6b6b}.finalbox .ey{font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:900;color:#8b97a8}.finalbox .ft{font-size:20px;font-weight:900;margin:5px 0}.finalbox.go .ft{color:#3fd383}.finalbox.mid .ft{color:#f5b23a}.finalbox.no .ft{color:#ff6b6b}.finalbox .fb{font-size:13px;line-height:1.6;color:#d0d8e3}.finalbox .next{margin-top:9px;padding-top:9px;border-top:1px solid #334153;font-size:12px;color:#eef3f8}.toc{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:10px}.toc span{font-size:10px;text-align:center;padding:7px 4px;border-radius:7px;background:#101823;border:1px solid #1e2b3d;color:#9fb0c5}
+
+:root{--bg:#070b11;--surface:#0d1521;--surface2:#111c2b;--line:#223149;--text:#f4f7fb;--muted:#91a0b4;--blue:#5b94ff;--green:#42d68b;--amber:#ffb83e;--red:#ff7070}
+body{background:radial-gradient(circle at top,#101a2a 0,#070b11 38%);color:var(--text)}
+.w{max-width:720px;padding:16px}.c{border-radius:18px;background:rgba(13,21,33,.96);border-color:var(--line);box-shadow:0 12px 34px rgba(0,0,0,.22)}
+.hero{margin-top:14px}.hero .big{font-size:34px}.hero .sm{max-width:570px;margin:auto}
+.house-summary{margin-top:12px;background:linear-gradient(145deg,#111d2e,#0b1320);border:1px solid #29405f;border-radius:16px;padding:15px}.house-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.house-head h2{margin:0;font-size:19px}.price-main{font-size:26px;font-weight:900;color:#fff;text-align:right}.house-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:12px}.house-k{background:#09111c;border:1px solid #1d2b40;border-radius:10px;padding:9px}.house-k .l{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}.house-k .v{font-size:15px;font-weight:800;margin-top:3px}.house-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.house-tag{font-size:11px;padding:5px 8px;border-radius:999px;background:#16243a;color:#bcd2ef;border:1px solid #29405f}
+.navtabs{display:flex;gap:7px;overflow-x:auto;padding:4px 0 8px;margin-top:12px;scrollbar-width:none}.navtabs::-webkit-scrollbar{display:none}.navbtn{flex:0 0 auto;padding:10px 13px;border-radius:999px;background:#111c2b;border:1px solid #263952;color:#a9b7c9;font-size:12px}.navbtn.active{background:var(--blue);border-color:var(--blue);color:#06101f}.panel{display:none}.panel.active{display:block}.panel-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:4px}.panel-title{font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:#91a9c8;font-weight:900;margin:0 0 8px}.nums{margin-top:0}.step{display:none}.moneycall{display:none!important}.toc{display:none!important}.sec{margin-top:12px}.finalbox{margin-top:0}.edit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.edit-card{background:#0b1320;border:1px solid #22304a;border-radius:10px;padding:10px}.edit-card label{margin-bottom:5px}.edit-note{font-size:11px;line-height:1.45;color:var(--muted);margin-top:8px}.renovation-call{background:#0b1626;border:1px solid #294c75;border-radius:11px;padding:11px;margin-top:8px;font-size:12px;color:#c7d7ea}.renovation-call b{color:#7eb4ff}.compact-details{margin-top:8px}.compact-details summary{padding:11px;border-radius:10px;background:#111c2b;color:#c6d3e3}.fact-grid{grid-template-columns:1fr 1fr}.zonebox,.socio{margin-top:9px}
+@media(max-width:600px){.house-grid{grid-template-columns:1fr 1fr}.edit-grid{grid-template-columns:1fr 1fr}.fact-grid{grid-template-columns:1fr}.price-main{font-size:22px}.house-head{align-items:center}}
+
+.parse-status{display:none;margin-top:9px;padding:10px 12px;border-radius:10px;font-size:12px;line-height:1.5}.parse-status.ok{display:block;background:#0b2a1b;border:1px solid #2f7650;color:#8de5b5}.parse-status.warn{display:block;background:#2a2109;border:1px solid #765f1c;color:#ffd47c}.parse-status.err{display:block;background:#2b1010;border:1px solid #763639;color:#ffaaaa}
+
+.rank-tools{display:grid;grid-template-columns:2fr 1fr 1fr;gap:7px;margin-bottom:9px}.rank-list{display:grid;gap:8px}.rank-card{display:grid;grid-template-columns:34px 1fr auto;gap:9px;background:#0b1320;border:1px solid #263a55;border-radius:11px;padding:11px}.rank-no{font-size:18px;font-weight:900;color:#6fa4ff}.rank-name{font-weight:900}.rank-score{font-weight:900;color:#45d889}.rank-desc{font-size:11px;line-height:1.45;color:#aebbd0;margin-top:4px}.rank-note{font-size:10px;color:#8090a4;line-height:1.45;margin-top:9px}.comparebox{background:#0b1626;border:1px solid #31577e;border-radius:11px;padding:12px;margin-top:9px;font-size:12px;line-height:1.55}.comparebox b{color:#8fc1ff}@media(max-width:600px){.rank-tools{grid-template-columns:1fr}.rank-card{grid-template-columns:28px 1fr}.rank-score{grid-column:2}}
+
+.section-comment{margin-top:10px;padding:11px 12px;border-radius:10px;background:#111e30;border:1px solid #294666;color:#b9c9dc;font-size:12px;line-height:1.55}.section-comment b{color:#8fc1ff}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.feature-card{background:#09121e;border:1px solid #233750;border-radius:11px;padding:10px}.feature-card .fl{font-size:9px;text-transform:uppercase;color:#8b99aa}.feature-card .fv{font-size:15px;font-weight:900;margin-top:3px}.feature-card.alert{border-color:#754633;background:#25150e}.feature-card.good{border-color:#286245;background:#0b2418}.money-split{display:grid;grid-template-columns:1fr 1fr;gap:8px}.money-panel{background:#0a1421;border:1px solid #29405d;border-radius:12px;padding:12px}.money-panel h4{margin:0 0 7px;font-size:12px;color:#9fc4ee;text-transform:uppercase}.money-total{font-size:25px;font-weight:900}.money-total.good{color:#45d889}.money-total.warn{color:#ffbd47}.decision{border-radius:14px;padding:15px;margin-top:12px}.decision.good{background:#0b281b;border:2px solid #45d889}.decision.warn{background:#2b210c;border:2px solid #ffbd47}.decision.bad{background:#2a1010;border:2px solid #ff7373}.decision .dt{font-size:12px;text-transform:uppercase;letter-spacing:.8px;font-weight:900}.decision .dv{font-size:25px;font-weight:900;margin:4px 0}.decision .dd{font-size:13px;line-height:1.55;color:#d1d9e5}.no-balcony{background:#28190d!important;border-color:#734821!important;color:#ffc477!important}.navtabs{position:sticky;top:0;z-index:5;background:#070b11;padding:8px 0}.panel-card{padding:16px}.panel-title{font-size:14px;color:#d8e6f7}.zone-only{margin-top:8px}@media(max-width:600px){.feature-grid{grid-template-columns:1fr 1fr}.money-split{grid-template-columns:1fr}}
+
+.verdict{border-radius:16px;padding:16px;margin:12px 0;border:2px solid}.verdict.green{background:#0b281b;border-color:#45d889}.verdict.amber{background:#2a210d;border-color:#ffbd47}.verdict.red{background:#2a1010;border-color:#ff7373}.verdict .kicker{font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:900;color:#a9b6c7}.verdict .title{font-size:24px;font-weight:900;margin:5px 0}.verdict.green .title{color:#45d889}.verdict.amber .title{color:#ffbd47}.verdict.red .title{color:#ff7373}.verdict .reason{font-size:13px;line-height:1.55;color:#d2dbe7}.verdict .actions{margin-top:10px;padding-top:10px;border-top:1px solid #405066;font-size:12px;line-height:1.6}.param-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.param{background:#09131f;border:1px solid #263a55;border-radius:10px;padding:10px}.param .pl{font-size:9px;text-transform:uppercase;color:#8999ad}.param .pv{font-size:17px;font-weight:900;margin-top:3px}.param .ph{font-size:10px;line-height:1.35;color:#8c9db2;margin-top:3px}.logic{margin-top:10px;background:#0a1523;border:1px solid #2a4566;border-radius:11px;padding:12px;font-size:12px;line-height:1.55;color:#bdcadd}.logic b{color:#91c2ff}.logic ul{margin:6px 0 0;padding-left:18px}.logic li{margin:4px 0}.section-comment{display:none}.section-note{margin-top:10px;background:#0c1725;border-left:4px solid #5b94ff;border-radius:8px;padding:11px 12px;font-size:12px;line-height:1.55;color:#c1cddd}.section-note b{color:#8fc1ff}.panel-intro{font-size:12px;color:#94a5bb;line-height:1.5;margin:-2px 0 10px}.decision{display:none!important}.hero{display:none!important}.limit-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.limit-card{background:#09131f;border:1px solid #253953;border-radius:11px;padding:11px}.limit-card .ll{font-size:9px;color:#8d9caf;text-transform:uppercase}.limit-card .lv{font-size:20px;font-weight:900;margin-top:3px}.limit-card .lh{font-size:11px;color:#95a5b8;line-height:1.4;margin-top:3px}@media(max-width:600px){.param-grid{grid-template-columns:1fr 1fr}.limit-row{grid-template-columns:1fr}}
+
+.edit-physical{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}.edit-physical label{font-size:10px;color:#91a4bb}.edit-physical input,.edit-physical select{margin-top:4px}.conclusion-hint{font-size:11px;color:#8da0b8;margin:8px 3px 0}.price-position{background:#24190d;border:1px solid #6b451e;border-radius:10px;padding:10px;margin-top:8px;color:#edc27c;font-size:12px;line-height:1.5}@media(max-width:600px){.edit-physical{grid-template-columns:1fr 1fr}}
+
+.parse-confirm{display:grid;grid-template-columns:1.5fr 1fr;gap:8px;margin-top:10px}.parse-confirm label{font-size:10px;color:#91a4bb}.funding-box{background:#0a1523;border:1px solid #294765;border-radius:12px;padding:12px;margin-top:10px}.funding-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}.funding-k{background:#08111d;border:1px solid #22364f;border-radius:9px;padding:9px}.funding-k .l{font-size:9px;text-transform:uppercase;color:#8798ad}.funding-k .v{font-size:16px;font-weight:900;margin-top:3px}.plain-insight{background:#0b1522;border:1px solid #263a55;border-radius:10px;padding:11px;margin-top:8px;font-size:12px;line-height:1.55}.plain-insight b{color:#8fc1ff}.source-warning{background:#291e0b;border:1px solid #71501e;border-radius:9px;padding:10px;margin-top:8px;color:#edc477;font-size:11px;line-height:1.5}@media(max-width:600px){.parse-confirm,.funding-grid{grid-template-columns:1fr}}
+
+.zone-story{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:9px}.zone-stat{background:#09131f;border:1px solid #263a55;border-radius:10px;padding:10px}.zone-stat .zl{font-size:9px;text-transform:uppercase;color:#8c9caf}.zone-stat .zv{font-size:17px;font-weight:900;margin-top:3px}.zone-stat .zh{font-size:10px;color:#90a1b5;line-height:1.4;margin-top:3px}.relation{margin-top:9px;border-radius:11px;padding:12px;background:#102033;border:1px solid #31577e;font-size:12px;line-height:1.55}.relation b{color:#8fc1ff}.buy-call{border-radius:14px;padding:15px;margin-top:10px;border:2px solid}.buy-call.yes{background:#0b281b;border-color:#45d889}.buy-call.wait{background:#2a210d;border-color:#ffbd47}.buy-call.no{background:#2a1010;border-color:#ff7373}.buy-call .bc-k{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#a4b1c2;font-weight:900}.buy-call .bc-t{font-size:24px;font-weight:900;margin:4px 0}.buy-call.yes .bc-t{color:#45d889}.buy-call.wait .bc-t{color:#ffbd47}.buy-call.no .bc-t{color:#ff7373}.buy-call .bc-r{font-size:13px;line-height:1.55}.buy-call ol{padding-left:19px;font-size:12px;line-height:1.55}.confidence{font-size:10px;color:#8fa0b5;margin-top:8px}@media(max-width:600px){.zone-story{grid-template-columns:1fr 1fr}}
+</style></head><body><div class="w">
+<h1>Casa Madrid <span style="font-size:11px;color:#7fb0ff">v18</span></h1><div class="sub">Incolla l'annuncio. Clicca sui riquadri per vedere i conti.</div>
+<div class="c">
+<textarea id="t" placeholder="Incolla tutto il testo dell'annuncio Idealista"></textarea>
+<div class="bt"><button class="p" id="go">Analizza</button><button id="cl">Pulisci</button></div><div id="parseStatus" class="parse-status"></div>
+</div>
+<div id="out"></div>
+<details class="c" id="ed" style="display:none">
+<summary>Correggi i dati della casa</summary>
+<div class="g3 mt"><div><label>Prezzo €</label><input id="p"></div><div><label>m² annuncio</label><input id="mq"></div><div><label>m² utili reali</label><input id="mu" placeholder="planimetria"></div></div>
+<div class="g2 mt"><div><label>Barrio</label><select id="b"></select></div><div><label>Tipo</label><select id="op"><option>Seconda mano</option><option>Nuova costruzione</option></select></div></div>
+<div class="g3 mt"><div><label>Camere</label><input id="cam"></div><div><label>Bagni</label><input id="bag"></div><div><label>Piano</label><input id="pi"></div></div>
+<div class="g3 mt"><div><label>Stato</label><select id="st"><option value="0">Nessun lavoro necessario</option><option value="150" selected>Piccoli interventi / personalizzazione</option><option value="450">Restyling parziale</option><option value="850">Ristrutturazione completa</option></select></div>
+<div><label>Anno costruzione</label><input id="an" placeholder="es. 1975"></div><div><label>Classe energetica</label><select id="en"><option value="">?</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div></div>
+<div class="g3 mt"><div><label>Ascensore</label><select id="asc"><option value="1">Sì</option><option value="0">No</option></select></div><div><label>Esterno</label><select id="ext"><option value="1">Sì</option><option value="0">No</option></select></div><div><label>Aria condizionata</label><select id="ac"><option value="1">Sì</option><option value="0">No</option></select></div></div>
+<div class="g3 mt"><div><label>Orientamento</label><select id="or"><option value="">?</option><option value="S">Sud</option><option value="SO">Sud-Ovest</option><option value="O">Ovest (tramonti)</option><option value="SE">Sud-Est</option><option value="E">Est</option><option value="N">Nord</option><option value="NO">Nord-Ovest</option><option value="NE">Nord-Est</option></select></div>
+<div><label>Affaccio</label><select id="af"><option value="">?</option><option value="patio">Cortile interno</option><option value="calle">Strada tranquilla</option><option value="traf">Strada trafficata</option></select></div>
+<div><label>Terrazza/balcone</label><select id="te"><option value="0">No</option><option value="1">Balcone</option><option value="2">Terrazza</option></select></div></div>
+<div class="g3 mt"><div><label>Garage</label><select id="ga"><option value="0">No</option><option value="1">Sì</option></select></div><div><label>Comunidad €/m</label><input id="cm" placeholder="auto"></div><div><label>Consegna</label><input id="dl" placeholder="es. 2029"></div></div>
+<div class="g2 mt"><div><label>Cooperativa</label><select id="co"><option value="0">No</option><option value="1">Sì</option></select></div><div><label>Affitto zona €/m² (override)</label><input id="ro" placeholder="auto"></div></div>
+</details>
+<details class="c" id="fin" style="display:none">
+<summary>I tuoi soldi</summary>
+<div class="g3 mt"><div><label>Tuoi fondi totali</label><input id="ca" value="68300"></div><div><label>Contributo totale di tua madre</label><input id="fa" value="100000"></div><div><label>Riserva personale da non usare</label><input id="rs" value="20000"></div></div>
+<div class="g3 mt"><div><label>Lordo annuo €</label><input id="gr" value="85000"></div><div><label>Netto/mese</label><input id="inc" value="4750"></div><div><label>Affitto che paghi ora</label><input id="now" value="1100"></div></div>
+<div class="g3 mt"><div><label>Tasso %</label><input id="tin" value="2.75"></div><div><label>Anni</label><input id="yr" value="30"></div><div><label>Perizia % prezzo</label><input id="pz" value="100"></div></div>
+<div class="g3 mt"><div><label>Agenzia % stimata</label><input id="ag" value="3" placeholder="auto se esclusa"></div><div><label>Agenzia importo esatto €</label><input id="age" placeholder="sostituisce la %"></div><div><label>Tieni la casa (anni)</label><input id="hy" value="10"></div></div>
+<div style="font-size:11px;color:#f5b23a;margin-top:7px;line-height:1.45">L’app include per prudenza una commissione standard del 3% nel cash necessario. È una <b>stima</b>: chiedi all’agenzia l’importo esatto IVA inclusa e mettilo nel campo centrale.</div>
+<div style="font-size:11px;color:#8b97a8;margin-top:8px;line-height:1.5">Il 3% è una stima prudenziale editabile. Inserisci 0 se il compratore non paga commissione, oppure usa il campo importo esatto quando l’agenzia conferma la cifra IVA inclusa.</div>
+</details>
+</div><script>
+const B={"Palacio":{"d":"Centro","v24":6399.01,"am":2403,"amin":32,"c3":9.7,"c5":4.7,"c10":7.0,"v26":7384,"r26":26.0,"ya":5.9,"yt":-0.6,"lvl":"B","nt":-26,"sec":1564,"ren":44000,"tag":"Storico","txt":"Madrid de los Austrias: palazzi, Ópera, Plaza Mayor. Bello e turistico, edifici molto vecchi.","mtr":"L2 L5 R"},"Embajadores":{"d":"Centro","v24":5229.59,"am":2582,"amin":34,"c3":6.7,"c5":3.1,"c10":5.5,"v26":6325,"r26":26.0,"ya":3.0,"yt":-0.6,"lvl":"B","nt":-26,"sec":1564,"ren":30000,"tag":"Multiculturale","txt":"Lavapiés: il più multiculturale della città. Artistico, economico, vivo. Percepito più duro di notte.","mtr":"L1 L3 L5"},"Cortes":{"d":"Centro","v24":6300.68,"am":1721,"amin":23,"c3":7.7,"c5":2.8,"c10":5.5,"v26":8474,"r26":26.0,"ya":5.5,"yt":-0.6,"lvl":"B","nt":-26,"sec":1564,"ren":45000,"tag":"Letterario","txt":"Barrio de las Letras: teatri, librerie, ristoranti d'autore. Turistico ma con carattere.","mtr":"L1 L2"},"Justicia":{"d":"Centro","v24":7913.82,"am":490,"amin":7,"c3":8.7,"c5":5.9,"c10":6.1,"v26":9680,"r26":26.0,"ya":5.4,"yt":-0.6,"lvl":"B","nt":-26,"sec":1564,"ren":50000,"tag":"Elegante + movida","txt":"Chueca: elegante, LGBTQ+, ristoranti e boutique. Vivo giorno e notte. Caro e rumoroso nel weekend.","mtr":"L5 L10"},"Universidad":{"d":"Centro","v24":6301.63,"am":1449,"amin":19,"c3":8.2,"c5":1.0,"c10":5.7,"v26":7949,"r26":26.0,"ya":2.5,"yt":-0.6,"lvl":"B","nt":-26,"sec":1564,"ren":40000,"tag":"Giovane + movida","txt":"Malasaña: bohémien, bar, vintage, creativi. Il più vivo di Madrid e il più rumoroso di notte.","mtr":"L2 L3 L10"},"Sol":{"d":"Centro","v24":7043.79,"am":1484,"amin":19,"c3":11.3,"c5":5.9,"c10":6.8,"v26":7721,"r26":26.0,"ya":1.9,"yt":-0.6,"lvl":"B","nt":-26,"sec":1564,"ren":38000,"tag":"Turistico","txt":"Cuore turistico: hotel, negozi, flussi continui. Pochi residenti veri, molti affitti brevi. Rumore costante.","mtr":"L1 L2 L3"},"Imperial":{"d":"Arganzuela","v24":5720.86,"am":3546,"amin":46,"c3":17.1,"c5":8.6,"c10":8.1,"v26":6346,"r26":22.3,"ya":8.0,"yt":-1.0,"lvl":"D","nt":-21,"sec":149,"ren":38000,"tag":"Residenziale + fiume","txt":"Vicino Madrid Río e Matadero. Tranquillo, verde nuovo, poco turismo.","mtr":"L5"},"Acacias":{"d":"Arganzuela","v24":4860.58,"am":3123,"amin":41,"c3":5.0,"c5":0.9,"c10":6.5,"v26":6219,"r26":22.3,"ya":11.0,"yt":-1.0,"lvl":"B","nt":-21,"sec":149,"ren":40000,"tag":"Residenziale","txt":"Classe media consolidata, ben collegato, zero turismo. Famiglie e professionisti.","mtr":"L3 L5 L6"},"Chopera":{"d":"Arganzuela","v24":4608.71,"am":4269,"amin":56,"c3":9.1,"c5":4.8,"c10":5.9,"v26":6346,"r26":22.3,"ya":8.0,"yt":-1.0,"lvl":"D","nt":-14,"sec":149,"ren":37000,"tag":"In trasformazione","txt":"Vicino Matadero e Legazpi. Prezzi ancora accessibili dentro la M-30.","mtr":"L3 L6"},"Legazpi":{"d":"Arganzuela","v24":5125.54,"am":5231,"amin":69,"c3":5.4,"c5":2.1,"c10":4.9,"v26":6346,"r26":22.3,"ya":8.0,"yt":-1.0,"lvl":"D","nt":-14,"sec":149,"ren":38000,"tag":"Rinato","txt":"Ex industriale trasformato: Matadero, Madrid Río, uffici nuovi. Cambiato molto in 10 anni.","mtr":"L3 L6"},"Delicias":{"d":"Arganzuela","v24":4743.7,"am":3825,"amin":50,"c3":6.8,"c5":4.3,"c10":5.3,"v26":6346,"r26":22.3,"ya":8.0,"yt":-1.0,"lvl":"D","nt":-14,"sec":149,"ren":38000,"tag":"Residenziale","txt":"Tranquillo, classe media, buoni collegamenti. Poca vita notturna, molta vita di quartiere.","mtr":"L3 R"},"Palos de la Frontera":{"d":"Arganzuela","v24":5090.81,"am":3041,"amin":40,"c3":8.9,"c5":5.7,"c10":7.2,"v26":6346,"r26":22.3,"ya":8.0,"yt":-1.0,"lvl":"D","nt":-14,"sec":149,"ren":42000,"tag":"Centrale e calmo","txt":"Tra Atocha e Madrid Río. Ben collegato, centro vicino senza il caos.","mtr":"L3"},"Atocha":{"d":"Arganzuela","v24":6501.6,"am":3340,"amin":44,"c3":4.2,"v26":6346,"r26":22.3,"ya":8.0,"yt":-1.0,"lvl":"D","nt":-17,"sec":149,"ren":40000,"tag":"Snodo","txt":"Stazione, musei, uffici. Comodissimo per viaggiare, più zona di passaggio che di vita.","mtr":"L1 R"},"Pacífico":{"d":"Retiro","v24":5105.6,"am":3925,"amin":52,"c3":7.0,"c5":3.6,"c10":6.0,"v26":8444,"r26":23.8,"ya":-0.5,"yt":0.6,"lvl":"D","nt":-15,"sec":57,"ren":43000,"tag":"Famiglie","txt":"Classe media, famiglie, Retiro vicino. Tranquillo e ben servito.","mtr":"L1 L6 R"},"Adelfas":{"d":"Retiro","v24":4851.81,"am":4503,"amin":60,"c3":2.8,"c5":1.3,"c10":5.3,"v26":5961,"r26":23.8,"ya":-17.2,"yt":0.6,"lvl":"B","nt":-20,"sec":57,"ren":39000,"tag":"Discreto","txt":"Il più riservato del Retiro. Verde, tranquillo, meno caro degli altri del distretto.","mtr":"L1 L6"},"Estrella":{"d":"Retiro","v24":5225.07,"am":3788,"amin":52,"c3":9.2,"c5":5.1,"c10":6.2,"v26":8444,"r26":23.8,"ya":-0.5,"yt":0.6,"lvl":"D","nt":-15,"sec":57,"ren":45000,"tag":"Borghese","txt":"Tranquillo e curato, famiglie, vicino al Retiro. Poco turismo.","mtr":"L2 L9"},"Ibiza":{"d":"Retiro","v24":7528.5,"am":2322,"amin":34,"c3":10.7,"c5":6.6,"c10":7.0,"v26":8444,"r26":23.8,"ya":-0.5,"yt":0.6,"lvl":"D","nt":54,"sec":57,"ren":58000,"tag":"Elegante sul parco","txt":"Affaccia sul Retiro. Elegante, richiestissimo, famiglie benestanti. Prezzi alti.","mtr":"L9"},"Los Jerónimos":{"d":"Retiro","v24":9382.2,"am":1737,"amin":23,"c3":12.3,"c5":6.9,"c10":8.4,"v26":8700,"r26":23.8,"ya":-9.7,"yt":0.6,"lvl":"B","nt":-15,"sec":57,"ren":68000,"tag":"Prime","txt":"Prado, Retiro, Congreso. Tra i più esclusivi di Madrid. Quasi museale.","mtr":"L1 L2"},"Niño Jesús":{"d":"Retiro","v24":6534.45,"am":3132,"amin":43,"c3":6.5,"c5":3.4,"c10":5.5,"v26":8444,"r26":23.8,"ya":-0.5,"yt":0.6,"lvl":"D","nt":54,"sec":57,"ren":54000,"tag":"Verde","txt":"Verde, tranquillo, famiglie. Retiro vicino senza i prezzi di Ibiza.","mtr":"L1 L9"},"Recoletos":{"d":"Salamanca","v24":12389.95,"am":1046,"amin":14,"c3":14.1,"c5":7.7,"c10":7.7,"v26":11276,"r26":28.3,"ya":8.5,"yt":-2.4,"lvl":"B","nt":-8,"sec":499,"ren":90000,"tag":"Lusso","txt":"Serrano, boutique, ambasciate. Il più caro di Madrid. Elegante e silenzioso.","mtr":"L4 L5"},"Goya":{"d":"Salamanca","v24":7581.47,"am":2247,"amin":32,"c3":8.2,"c5":5.2,"c10":6.7,"v26":10440,"r26":28.3,"ya":-1.9,"yt":-2.4,"lvl":"B","nt":-8,"sec":499,"ren":103712,"tag":"Lusso + commercio","txt":"La renta più alta del centro città. Commercio, ristoranti, famiglie benestanti.","mtr":"L2 L4"},"Fuente del Berro":{"d":"Salamanca","v24":5975.19,"am":2743,"amin":39,"c3":5.9,"c5":4.5,"c10":5.8,"v26":10841,"r26":28.3,"ya":-1.9,"yt":-2.4,"lvl":"D","nt":-8,"sec":499,"ren":48000,"tag":"Verde e accessibile","txt":"Parco omonimo, tranquillo, buon rapporto qualità-prezzo dentro Salamanca.","mtr":"L2 L4 L6"},"Guindalera":{"d":"Salamanca","v24":5657.4,"am":2762,"amin":40,"c3":7.4,"c5":4.3,"c10":6.3,"v26":7325,"r26":28.3,"ya":17.2,"yt":-2.4,"lvl":"B","nt":-6,"sec":499,"ren":46000,"tag":"Salamanca accessibile","txt":"Professionisti giovani e famiglie. Metropolitano vicino, prezzo molto sotto Recoletos.","mtr":"L4 L6 L7"},"Lista":{"d":"Salamanca","v24":8087.78,"am":1990,"amin":29,"c3":12.4,"c5":6.0,"c10":7.5,"v26":10640,"r26":28.3,"ya":-1.9,"yt":-2.4,"lvl":"B","nt":-8,"sec":499,"ren":72000,"tag":"Elegante","txt":"Elegante e residenziale, meno vetrina di Recoletos. Famiglie consolidate.","mtr":"L2 L4"},"Castellana":{"d":"Salamanca","v24":9792.99,"am":1520,"amin":21,"c3":12.2,"c5":4.2,"c10":5.8,"v26":11387,"r26":28.3,"ya":-1.9,"yt":-2.4,"lvl":"B","nt":-8,"sec":499,"ren":93304,"tag":"Prime + uffici","txt":"Uffici prestigiosi e residenze di alto livello sull'asse Castellana.","mtr":"L5 L7 L10"},"El Viso":{"d":"Chamartín","v24":7883.12,"am":2967,"amin":43,"c3":4.6,"c5":4.2,"c10":4.2,"v26":9398,"r26":23.5,"ya":2.1,"yt":-1.5,"lvl":"B","nt":-10,"sec":368,"ren":85000,"tag":"Lusso villette","txt":"Villette unifamiliari dentro la città. Esclusivo, silenzioso, quasi un'altra Madrid.","mtr":"L6 L7"},"Prosperidad":{"d":"Chamartín","v24":5499.09,"am":3266,"amin":48,"c3":7.8,"c5":4.5,"c10":6.3,"v26":7248,"r26":23.5,"ya":5.3,"yt":-1.5,"lvl":"B","nt":-4,"sec":368,"ren":45000,"tag":"Vita di quartiere","txt":"Mercato, bar di zona, vicini che si conoscono. Buon compromesso prezzo-qualità.","mtr":"L4"},"Ciudad Jardín":{"d":"Chamartín","v24":6705.35,"am":3279,"amin":48,"c3":11.3,"c5":8.8,"c10":7.2,"v26":7219,"r26":23.5,"ya":3.1,"yt":-1.5,"lvl":"B","nt":-10,"sec":368,"ren":56000,"tag":"Elegante e basso","txt":"Edifici bassi, alberi, tranquillo. Famiglie e professionisti.","mtr":"L6 L8"},"Hispanoamérica":{"d":"Chamartín","v24":6570.69,"am":3828,"amin":56,"c3":6.4,"c5":3.7,"c10":5.4,"v26":8774,"r26":23.5,"ya":14.2,"yt":-1.5,"lvl":"B","nt":-10,"sec":368,"ren":62000,"tag":"Zona Bernabéu","txt":"Residenziale di buon livello, famiglie, molto richiesto. Prezzi in forte crescita.","mtr":"L8 L9"},"Nueva España":{"d":"Chamartín","v24":7252.24,"am":4702,"amin":69,"c3":5.5,"c5":2.8,"c10":4.7,"v26":8625,"r26":23.5,"ya":7.9,"yt":-1.5,"lvl":"B","nt":-10,"sec":368,"ren":94408,"tag":"Ricco","txt":"Tra i redditi più alti della città. Residenziale di alto livello.","mtr":"L9"},"Castilla":{"d":"Chamartín","v24":5429.22,"am":6023,"amin":86,"c3":9.8,"c5":6.1,"c10":4.8,"v26":7283,"r26":23.5,"ya":13.5,"yt":-1.5,"lvl":"B","nt":-10,"sec":368,"ren":44000,"tag":"Uffici + nuovo","txt":"Cuatro Torres e uffici, più zone residenziali. Cresce coi progetti del nord.","mtr":"L1 L10"},"Bellas Vistas":{"d":"Tetuán","v24":4355.09,"am":3361,"amin":49,"c3":7.3,"c5":4.9,"c10":7.0,"v26":5642,"r26":22.9,"ya":4.6,"yt":-0.7,"lvl":"B","nt":-25,"sec":161,"ren":30000,"tag":"Popolare in gentrificazione","txt":"Multiculturale, economico. Molti edifici vecchi senza ascensore.","mtr":"L1 L7"},"Cuatro Caminos":{"d":"Tetuán","v24":5479.99,"am":3030,"amin":45,"c3":7.6,"c5":4.3,"c10":6.5,"v26":7044,"r26":22.9,"ya":4.0,"yt":-0.7,"lvl":"B","nt":-28,"sec":161,"ren":38000,"tag":"Popolare centrale","txt":"Nodo di trasporti, vita di quartiere, prezzi accessibili vicino al centro. Sta cambiando.","mtr":"L1 L2 L6"},"Castillejos":{"d":"Tetuán","v24":5472.11,"am":3974,"amin":58,"c3":8.5,"c5":4.2,"c10":5.2,"v26":6825,"r26":22.9,"ya":-6.4,"yt":-0.7,"lvl":"B","nt":-28,"sec":161,"ren":42000,"tag":"Residenziale","txt":"Tra Bernabéu e Cuatro Caminos. Residenziale, ben collegato.","mtr":"L1 L6"},"Almenara":{"d":"Tetuán","v24":4385.78,"am":5158,"amin":75,"c3":10.0,"c5":6.5,"c10":5.5,"v26":5599,"r26":22.9,"ya":12.1,"yt":-0.7,"lvl":"B","nt":-25,"sec":161,"ren":31000,"tag":"Popolare tranquillo","txt":"Prezzi bassi per Tetuán. Lontano dal centro a piedi.","mtr":"L1"},"Valdeacederas":{"d":"Tetuán","v24":4452.47,"am":4889,"amin":71,"c3":10.2,"c5":7.9,"c10":7.9,"v26":5384,"r26":22.9,"ya":5.2,"yt":-0.7,"lvl":"B","nt":-25,"sec":161,"ren":29000,"tag":"Popolare + obra nueva","txt":"Multiculturale ed economico. Metro L1. Molta costruzione nuova.","mtr":"L1"},"Berruguete":{"d":"Tetuán","v24":4282.9,"am":4083,"amin":59,"c3":9.1,"c5":7.5,"c10":6.6,"v26":5326,"r26":22.9,"ya":12.9,"yt":-0.7,"lvl":"B","nt":-25,"sec":161,"ren":29000,"tag":"Popolare","txt":"Residenziale, tra i prezzi più bassi dentro la M-30. Vita di quartiere.","mtr":"L1"},"Gaztambide":{"d":"Chamberí","v24":6657.11,"am":2176,"amin":30,"c3":8.8,"c5":3.9,"c10":6.7,"v26":8228,"r26":25.8,"ya":9.7,"yt":-1.1,"lvl":"B","nt":-12,"sec":256,"ren":48000,"tag":"Universitario","txt":"Studenti e giovani professionisti, vicino Moncloa. Vivo ma non caotico.","mtr":"L3 L6"},"Arapiles":{"d":"Chamberí","v24":6654.11,"am":1694,"amin":24,"c3":7.5,"c5":3.3,"c10":6.1,"v26":8217,"r26":25.8,"ya":3.4,"yt":-1.1,"lvl":"B","nt":-12,"sec":256,"ren":47000,"tag":"Chamberí accessibile","txt":"Vita di quartiere, mercati, bar, senza i prezzi di Almagro. Equilibrato.","mtr":"L1 L2 L6"},"Trafalgar":{"d":"Chamberí","v24":7322.66,"am":1029,"amin":15,"c3":10.2,"c5":5.8,"c10":6.4,"v26":9461,"r26":25.8,"ya":7.8,"yt":-1.1,"lvl":"B","nt":-12,"sec":256,"ren":55000,"tag":"Elegante e vivo","txt":"Buoni ristoranti, vicino Chueca e Bilbao. Molto richiesto.","mtr":"L1 L4 L10"},"Almagro":{"d":"Chamberí","v24":9287.64,"am":896,"amin":13,"c3":8.0,"c5":7.9,"c10":7.1,"v26":11186,"r26":25.8,"ya":0.3,"yt":-1.1,"lvl":"B","nt":-12,"sec":256,"ren":75000,"tag":"Signorile","txt":"Palazzi, ambasciate, silenzio. Il più caro di Chamberí.","mtr":"L4 L5 L7 L10"},"Ríos Rosas":{"d":"Chamberí","v24":6792.64,"am":1745,"amin":26,"c3":5.5,"c5":4.6,"c10":5.5,"v26":8778,"r26":25.8,"ya":6.6,"yt":-1.1,"lvl":"B","nt":-12,"sec":256,"ren":52000,"tag":"Tranquillo + uffici","txt":"Residenziale, Nuevos Ministerios vicino. Ben collegato.","mtr":"L1 L6 L7"},"Vallehermoso":{"d":"Chamberí","v24":5997.21,"am":2803,"amin":40,"c3":5.9,"c5":4.8,"c10":5.5,"v26":7674,"r26":25.8,"ya":2.3,"yt":-1.1,"lvl":"B","nt":-12,"sec":256,"ren":46000,"tag":"Chamberí economico","txt":"Il più accessibile del distretto. Famiglie, vicino Canal e Moncloa.","mtr":"L2 L7"},"El Pardo":{"d":"Fuencarral-El Pardo","v24":3124.98,"am":13997,"amin":193,"c3":1.1,"c10":3.8,"v26":5610,"r26":18.8,"ya":7.8,"yt":0.4,"lvl":"D","nt":-20,"sec":181,"ren":40000,"tag":"Rurale","txt":"Villaggio nel monte del Pardo. Isolato, natura, lontanissimo.","mtr":"—"},"Fuentelarreina":{"d":"Fuencarral-El Pardo","v24":4597.66,"am":7953,"amin":111,"c3":7.1,"c10":4.1,"v26":5610,"r26":18.8,"ya":7.8,"yt":0.4,"lvl":"D","nt":-20,"sec":181,"ren":55000,"tag":"Lusso villette","txt":"Villette, tranquillo ed esclusivo.","mtr":"C3"},"Peñagrande":{"d":"Fuencarral-El Pardo","v24":4647.79,"am":6453,"amin":91,"c3":9.3,"c5":6.1,"c10":7.3,"v26":5610,"r26":18.8,"ya":7.8,"yt":0.4,"lvl":"D","nt":-20,"sec":181,"ren":38000,"tag":"Residenziale","txt":"Famiglie, buon rapporto qualità-prezzo.","mtr":"L7"},"Pilar":{"d":"Fuencarral-El Pardo","v24":4318.47,"am":15681,"amin":216,"c3":7.9,"c5":4.7,"c10":6.4,"v26":5610,"r26":18.8,"ya":7.8,"yt":0.4,"lvl":"D","nt":-20,"sec":181,"ren":35000,"tag":"Popolare collegato","txt":"Ben collegato col metro, economico.","mtr":"L7 L9"},"La Paz":{"d":"Fuencarral-El Pardo","v24":4250.25,"am":7100,"amin":103,"c3":5.0,"c5":3.1,"c10":4.2,"v26":5610,"r26":18.8,"ya":7.8,"yt":0.4,"lvl":"D","nt":-20,"sec":181,"ren":45000,"tag":"Residenziale","txt":"Ospedale La Paz, ben collegato.","mtr":"L9"},"Valverde":{"d":"Fuencarral-El Pardo","v24":4046.65,"am":8816,"amin":124,"c3":-2.8,"c5":3.0,"c10":2.9,"v26":5610,"r26":18.8,"ya":7.8,"yt":0.4,"lvl":"D","nt":-20,"sec":181,"ren":40000,"tag":"Nuovo + famiglie","txt":"Las Tablas e Montecarmelo: obra nueva, famiglie giovani, uffici.","mtr":"L10 C4"},"Mirasierra":{"d":"Fuencarral-El Pardo","v24":5841.08,"am":8344,"amin":120,"c3":9.4,"c5":13.5,"c10":7.0,"v26":5610,"r26":18.8,"ya":7.8,"yt":0.4,"lvl":"D","nt":-20,"sec":181,"ren":62000,"tag":"Buon livello","txt":"Residenziale verde, famiglie benestanti.","mtr":"L9"},"El Goloso":{"d":"Fuencarral-El Pardo","v24":5882.25,"am":16529,"amin":231,"c3":3.1,"c5":2.3,"c10":4.0,"v26":5610,"r26":18.8,"ya":7.8,"yt":0.4,"lvl":"D","nt":-20,"sec":181,"ren":50000,"tag":"Molto periferico","txt":"Base militare, poco urbano.","mtr":"C4"},"Casa de Campo":{"d":"Moncloa-Aravaca","v24":4444.8,"am":3493,"amin":45,"c3":5.8,"c5":5.9,"c10":5.7,"v26":6332,"r26":21.9,"ya":3.4,"yt":-0.5,"lvl":"D","nt":-20,"sec":152,"ren":35000,"tag":"Verde popolare","txt":"Vicino al parco più grande di Madrid. Prezzi bassi per Moncloa.","mtr":"L5 L10"},"Argüelles":{"d":"Moncloa-Aravaca","v24":6425.21,"am":2294,"amin":31,"c3":1.9,"c5":6.1,"c10":6.0,"v26":6332,"r26":21.9,"ya":3.4,"yt":-0.5,"lvl":"D","nt":-20,"sec":152,"ren":52000,"tag":"Universitario elegante","txt":"Studenti, Parque del Oeste, commercio. Elegante ma giovane.","mtr":"L3 L4 L6"},"Ciudad Universitaria":{"d":"Moncloa-Aravaca","v24":5356.93,"am":4446,"amin":60,"c3":7.4,"c5":4.2,"c10":6.5,"v26":6332,"r26":21.9,"ya":3.4,"yt":-0.5,"lvl":"D","nt":-20,"sec":152,"ren":45000,"tag":"Campus","txt":"Università, verde, studenti. Poco commercio serale.","mtr":"L6"},"Valdezarza":{"d":"Moncloa-Aravaca","v24":3683.14,"am":5056,"amin":73,"c3":7.0,"c5":2.9,"c10":6.0,"v26":4989,"r26":21.9,"ya":-6.3,"yt":-0.5,"lvl":"B","nt":-20,"sec":152,"ren":34000,"tag":"Popolare","txt":"Residenziale economico, vicino Ciudad Universitaria.","mtr":"L7"},"Valdemarín":{"d":"Moncloa-Aravaca","v24":4761.0,"am":10694,"amin":151,"c3":1.4,"c5":-0.2,"c10":2.1,"v26":6332,"r26":21.9,"ya":3.4,"yt":-0.5,"lvl":"D","nt":-20,"sec":152,"ren":78000,"tag":"Lusso villette","txt":"Chalet, zona ricchissima. Serve auto.","mtr":"—"},"El Plantío":{"d":"Moncloa-Aravaca","v24":4470.67,"am":12485,"amin":176,"c3":1.6,"c10":7.3,"v26":6332,"r26":21.9,"ya":3.4,"yt":-0.5,"lvl":"D","nt":-20,"sec":152,"ren":80000,"tag":"Lusso villette","txt":"Chalet con giardino, molto esclusivo. Fuori città, serve auto.","mtr":"—"},"Aravaca":{"d":"Moncloa-Aravaca","v24":5203.49,"am":9770,"amin":137,"c3":9.2,"c5":5.1,"c10":4.4,"v26":6332,"r26":21.9,"ya":3.4,"yt":-0.5,"lvl":"D","nt":-20,"sec":152,"ren":103933,"tag":"Il più ricco","txt":"La renta più alta di Madrid: 103.933 €/anno. Villette, scuole internazionali.","mtr":"C7 C10"},"Los Cármenes":{"d":"Latina","v24":2971.74,"am":5286,"amin":72,"c3":6.4,"c5":3.8,"c10":6.2,"v26":4044,"r26":19.4,"ya":8.1,"yt":0.8,"lvl":"D","nt":-24,"sec":345,"ren":27000,"tag":"Popolare","txt":"Residenziale economico, ben collegato col metro.","mtr":"L5 L6"},"Puerta del Ángel":{"d":"Latina","v24":3293.67,"am":4352,"amin":60,"c3":8.0,"c5":5.0,"c10":7.1,"v26":4425,"r26":19.4,"ya":24.5,"yt":0.8,"lvl":"B","nt":-24,"sec":345,"ren":29000,"tag":"Gentrificazione","txt":"Il più in trasformazione di Madrid: giovani, bar nuovi, Madrid Río.","mtr":"L6 L10"},"Lucero":{"d":"Latina","v24":2852.81,"am":5948,"amin":81,"c3":7.5,"c5":5.0,"c10":6.2,"v26":3984,"r26":19.4,"ya":29.1,"yt":0.8,"lvl":"B","nt":-24,"sec":345,"ren":26000,"tag":"Popolare","txt":"Tranquillo ed economico. Lontano dal centro.","mtr":"L5"},"Aluche":{"d":"Latina","v24":2686.61,"am":7682,"amin":107,"c3":6.1,"c5":4.3,"c10":5.4,"v26":4044,"r26":19.4,"ya":8.1,"yt":0.8,"lvl":"D","nt":-24,"sec":345,"ren":28000,"tag":"Popolare ben collegato","txt":"Ottimi collegamenti metro e cercanías. Prezzi tra i più bassi.","mtr":"L5 C5"},"Campamento":{"d":"Latina","v24":2819.36,"am":8349,"amin":116,"c3":9.3,"c5":6.3,"c10":6.5,"v26":4067,"r26":19.4,"ya":32.6,"yt":0.8,"lvl":"B","nt":-24,"sec":345,"ren":29000,"tag":"Periferico","txt":"Residenziale in espansione, economico.","mtr":"L5 L10"},"Cuatro Vientos":{"d":"Latina","v24":3502.69,"am":9834,"amin":137,"c3":4.3,"c5":1.8,"c10":4.3,"v26":4044,"r26":19.4,"ya":8.1,"yt":0.8,"lvl":"D","nt":-24,"sec":345,"ren":30000,"tag":"Molto periferico","txt":"Vicino aeroporto militare. Poco urbano.","mtr":"L10 C5"},"Águilas":{"d":"Latina","v24":2620.47,"am":9592,"amin":134,"c3":6.8,"c5":3.1,"c10":4.4,"v26":4044,"r26":19.4,"ya":8.1,"yt":0.8,"lvl":"D","nt":-24,"sec":345,"ren":26000,"tag":"Popolare","txt":"Periferico, prezzi bassi.","mtr":"L5"},"Comillas":{"d":"Carabanchel","v24":3309.39,"am":4809,"amin":64,"c3":7.6,"c5":5.7,"c10":7.2,"v26":3842,"r26":19.1,"ya":10.8,"yt":1.1,"lvl":"D","nt":-26,"sec":572,"ren":28000,"tag":"In trasformazione","txt":"Vicino Madrid Río. Artisti e giovani iniziano ad arrivare.","mtr":"L5"},"Opañel":{"d":"Carabanchel","v24":2821.21,"am":5858,"amin":79,"c3":5.0,"c5":4.4,"c10":5.5,"v26":3842,"r26":19.1,"ya":10.8,"yt":1.1,"lvl":"D","nt":-26,"sec":572,"ren":26000,"tag":"Popolare","txt":"Economico, ben collegato. Vita di quartiere.","mtr":"L5 L6"},"San Isidro":{"d":"Carabanchel","v24":3094.47,"am":5557,"amin":76,"c3":7.8,"c5":7.0,"c10":6.7,"v26":3842,"r26":19.1,"ya":10.8,"yt":1.1,"lvl":"D","nt":-26,"sec":572,"ren":27000,"tag":"Popolare tradizionale","txt":"La pradera di San Isidro. Economico, identità forte.","mtr":"L5"},"Vista Alegre":{"d":"Carabanchel","v24":2587.19,"am":7149,"amin":98,"c3":5.7,"c5":4.0,"c10":5.8,"v26":3842,"r26":19.1,"ya":10.8,"yt":1.1,"lvl":"D","nt":-26,"sec":572,"ren":26000,"tag":"Popolare","txt":"Residenziale con parco, prezzi bassi.","mtr":"L5"},"Puerta Bonita":{"d":"Carabanchel","v24":2425.96,"am":7092,"amin":97,"c3":5.7,"c5":4.1,"c10":4.0,"v26":3842,"r26":19.1,"ya":10.8,"yt":1.1,"lvl":"D","nt":-26,"sec":572,"ren":25000,"tag":"Tra i più economici","txt":"Popolare e multiculturale.","mtr":"L5 L11"},"Buenavista":{"d":"Carabanchel","v24":3180.34,"am":8636,"amin":120,"c3":10.4,"c5":6.6,"c10":6.6,"v26":3842,"r26":19.1,"ya":10.8,"yt":1.1,"lvl":"D","nt":-26,"sec":572,"ren":29000,"tag":"Nuovo popolare","txt":"PAU con obra nueva. Famiglie giovani.","mtr":"L11"},"Abrantes":{"d":"Carabanchel","v24":2385.79,"am":7253,"amin":99,"c3":5.8,"c5":4.6,"c10":5.3,"v26":3842,"r26":19.1,"ya":10.8,"yt":1.1,"lvl":"D","nt":-26,"sec":572,"ren":24000,"tag":"Tra i più economici","txt":"Popolare, multiculturale.","mtr":"L5"},"Orcasitas":{"d":"Usera","v24":2022.97,"am":7638,"amin":104,"c3":2.7,"c5":2.9,"c10":4.0,"v26":3035,"r26":19.4,"ya":27.5,"yt":1.6,"lvl":"B","nt":-28,"sec":129,"ren":22000,"tag":"Popolare","txt":"Edilizia pubblica, economico. Metro.","mtr":"L3"},"Orcasur":{"d":"Usera","v24":2855.32,"am":7646,"amin":103,"c3":14.4,"c5":11.2,"c10":7.6,"v26":3626,"r26":19.4,"ya":18.3,"yt":1.6,"lvl":"D","nt":-28,"sec":129,"ren":21000,"tag":"Complicato","txt":"Problemi sociali storici. Prezzi molto bassi.","mtr":"L3"},"San Fermín":{"d":"Usera","v24":2317.21,"am":7068,"amin":94,"c3":7.3,"c5":4.6,"c10":4.9,"v26":3626,"r26":19.4,"ya":18.3,"yt":1.6,"lvl":"D","nt":-28,"sec":129,"ren":22000,"tag":"Popolare","txt":"Economico, vicino a Legazpi.","mtr":"L3"},"Almendrales":{"d":"Usera","v24":2915.03,"am":5637,"amin":76,"c3":4.4,"c5":7.6,"c10":7.6,"v26":3626,"r26":19.4,"ya":18.3,"yt":1.6,"lvl":"D","nt":-28,"sec":129,"ren":24000,"tag":"Popolare","txt":"In leggera trasformazione per la vicinanza a Legazpi.","mtr":"L3 L6"},"Moscardó":{"d":"Usera","v24":2786.36,"am":5352,"amin":71,"c3":9.3,"c5":6.2,"c10":7.3,"v26":3626,"r26":19.4,"ya":18.3,"yt":1.6,"lvl":"D","nt":-28,"sec":129,"ren":26000,"tag":"Popolare collegato","txt":"Ben collegato, vicino Legazpi e Madrid Río.","mtr":"L3 L6"},"Zofío":{"d":"Usera","v24":2488.09,"am":6100,"amin":83,"c3":12.3,"c5":4.6,"c10":6.5,"v26":3838,"r26":19.4,"ya":48.7,"yt":1.6,"lvl":"B","nt":-28,"sec":129,"ren":23000,"tag":"Popolare","txt":"Economico, edilizia anni 60-70.","mtr":"L3"},"Pradolongo":{"d":"Usera","v24":2231.88,"am":6649,"amin":90,"c3":6.0,"c5":3.7,"c10":5.0,"v26":3626,"r26":19.4,"ya":18.3,"yt":1.6,"lvl":"D","nt":-28,"sec":129,"ren":22000,"tag":"Popolare","txt":"Parco, economico. Forte comunità cinese nel distretto.","mtr":"L3"},"Entrevías":{"d":"Puente de Vallecas","v24":2138.82,"am":6189,"amin":84,"c3":7.2,"c5":5.2,"c10":6.6,"v26":3480,"r26":19.2,"ya":17.9,"yt":3.6,"lvl":"D","nt":-28,"sec":815,"ren":21000,"tag":"Complicato","txt":"Storicamente difficile, prezzi tra i più bassi di Madrid.","mtr":"C1 C7"},"San Diego":{"d":"Puente de Vallecas","v24":2508.13,"am":6059,"amin":82,"c3":7.6,"c5":5.4,"c10":6.8,"v26":3480,"r26":19.2,"ya":17.9,"yt":3.6,"lvl":"D","nt":-28,"sec":815,"ren":22000,"tag":"Vallecas storica","txt":"Identità forte, prezzi bassi. Metro.","mtr":"L1"},"Palomeras Bajas":{"d":"Puente de Vallecas","v24":2487.89,"am":6538,"amin":90,"c3":7.6,"c5":5.9,"c10":6.4,"v26":3480,"r26":19.2,"ya":17.9,"yt":3.6,"lvl":"D","nt":-28,"sec":815,"ren":24000,"tag":"Popolare","txt":"Residenziale ben collegato.","mtr":"L1"},"Palomeras Sureste":{"d":"Puente de Vallecas","v24":2245.45,"am":7775,"amin":110,"c3":7.0,"c5":6.4,"c10":6.1,"v26":3480,"r26":19.2,"ya":17.9,"yt":3.6,"lvl":"D","nt":-28,"sec":815,"ren":23000,"tag":"Periferico","txt":"Economico, edilizia anni 80.","mtr":"L1"},"Portazgo":{"d":"Puente de Vallecas","v24":2313.93,"am":6963,"amin":98,"c3":8.2,"c5":5.5,"c10":6.5,"v26":3480,"r26":19.2,"ya":17.9,"yt":3.6,"lvl":"D","nt":-28,"sec":815,"ren":24000,"tag":"Popolare","txt":"Metro L1, economico.","mtr":"L1"},"Numancia":{"d":"Puente de Vallecas","v24":2730.31,"am":5158,"amin":70,"c3":12.2,"c5":6.4,"c10":6.5,"v26":3480,"r26":19.2,"ya":17.9,"yt":3.6,"lvl":"D","nt":-28,"sec":815,"ren":26000,"tag":"Vallecas centrale","txt":"Il meglio collegato del distretto.","mtr":"L1"},"Pavones":{"d":"Moratalaz","v24":2815.4,"am":7433,"amin":104,"c3":10.0,"c5":7.1,"c10":5.9,"v26":4563,"r26":17.3,"ya":14.8,"yt":1.8,"lvl":"D","nt":-22,"sec":91,"ren":30000,"tag":"Tranquillo","txt":"Famiglie, verde. Poco centrale ma vivibile.","mtr":"L9"},"Horcajo":{"d":"Moratalaz","v24":4665.3,"am":7250,"amin":103,"c3":11.4,"v26":4563,"r26":17.3,"ya":14.8,"yt":1.8,"lvl":"D","nt":-22,"sec":91,"ren":42000,"tag":"Residenziale","txt":"Edilizia più recente del distretto.","mtr":"L9"},"Marroquina":{"d":"Moratalaz","v24":3490.79,"am":5730,"amin":80,"c3":6.0,"c5":3.8,"c10":5.7,"v26":4563,"r26":17.3,"ya":14.8,"yt":1.8,"lvl":"D","nt":-22,"sec":91,"ren":34000,"tag":"Famiglie","txt":"Verde e tranquillo. Moratalaz è il 2° distretto più sicuro dopo Retiro.","mtr":"L9"},"Media Legua":{"d":"Moratalaz","v24":3283.15,"am":4546,"amin":62,"c3":7.6,"c5":4.7,"c10":6.4,"v26":4563,"r26":17.3,"ya":14.8,"yt":1.8,"lvl":"D","nt":-22,"sec":91,"ren":33000,"tag":"Residenziale","txt":"Tranquillo, ben collegato con M-30.","mtr":"L9"},"Fontarrón":{"d":"Moratalaz","v24":2790.09,"am":6228,"amin":87,"c3":7.7,"c5":4.1,"c10":5.7,"v26":4563,"r26":17.3,"ya":14.8,"yt":1.8,"lvl":"D","nt":-22,"sec":91,"ren":30000,"tag":"Residenziale","txt":"Tranquillo ed economico.","mtr":"L9"},"Vinateros":{"d":"Moratalaz","v24":3003.98,"am":6266,"amin":88,"c3":6.7,"c5":4.9,"c10":5.6,"v26":4563,"r26":17.3,"ya":14.8,"yt":1.8,"lvl":"D","nt":-22,"sec":91,"ren":31000,"tag":"Famiglie","txt":"Tranquillo, prezzi accessibili.","mtr":"L9"},"Ventas":{"d":"Ciudad Lineal","v24":3325.0,"am":4282,"amin":61,"c3":6.7,"c5":4.1,"c10":6.0,"v26":5201,"r26":20.0,"ya":8.0,"yt":-2.4,"lvl":"D","nt":-22,"sec":307,"ren":30000,"tag":"Popolare centrale","txt":"Las Ventas. Popolare, ben collegato, accessibile.","mtr":"L2 L5"},"Pueblo Nuevo":{"d":"Ciudad Lineal","v24":3114.0,"am":4767,"amin":67,"c3":6.2,"c5":5.1,"c10":6.1,"v26":5201,"r26":20.0,"ya":8.0,"yt":-2.4,"lvl":"D","nt":-22,"sec":307,"ren":31000,"tag":"Popolare","txt":"Residenziale con metro, prezzi bassi.","mtr":"L5"},"Quintana":{"d":"Ciudad Lineal","v24":3860.46,"am":4583,"amin":65,"c3":7.0,"c5":4.2,"c10":6.3,"v26":5201,"r26":20.0,"ya":8.0,"yt":-2.4,"lvl":"D","nt":-22,"sec":307,"ren":33000,"tag":"Vita di quartiere","txt":"Economico, ben collegato.","mtr":"L5"},"La Concepción":{"d":"Ciudad Lineal","v24":4859.0,"am":5312,"amin":76,"c3":9.4,"c5":4.0,"c10":6.8,"v26":5084,"r26":20.0,"ya":-13.6,"yt":-2.4,"lvl":"B","nt":-22,"sec":307,"ren":38000,"tag":"Classe media","txt":"Residenziale tranquillo.","mtr":"L5 L7"},"San Pascual":{"d":"Ciudad Lineal","v24":4738.42,"am":4567,"amin":65,"c3":7.3,"c5":2.7,"c10":4.9,"v26":5201,"r26":20.0,"ya":8.0,"yt":-2.4,"lvl":"D","nt":-22,"sec":307,"ren":42000,"tag":"Residenziale","txt":"Tranquillo, famiglie, buoni servizi.","mtr":"L4 L7"},"San Juan Bautista":{"d":"Ciudad Lineal","v24":5430.97,"am":4637,"amin":66,"c3":9.4,"c5":5.8,"c10":5.6,"v26":6883,"r26":20.0,"ya":21.0,"yt":-2.4,"lvl":"B","nt":-22,"sec":307,"ren":50000,"tag":"Arturo Soria","txt":"Residenziale di buon livello, verde, famiglie benestanti.","mtr":"L4"},"Colina":{"d":"Ciudad Lineal","v24":5770.88,"am":5262,"amin":76,"c3":11.0,"c5":6.3,"c10":4.9,"v26":6134,"r26":20.0,"ya":-19.6,"yt":-2.4,"lvl":"B","nt":-22,"sec":307,"ren":46000,"tag":"Arturo Soria","txt":"Edifici con giardino, tranquillo e curato.","mtr":"L4"},"Atalaya":{"d":"Ciudad Lineal","v24":5759.98,"am":5914,"amin":85,"c10":3.0,"v26":5201,"r26":20.0,"ya":8.0,"yt":-2.4,"lvl":"D","nt":-22,"sec":307,"ren":44000,"tag":"Residenziale","txt":"Tranquillo, buon livello.","mtr":"L4"},"Costillares":{"d":"Ciudad Lineal","v24":5471.11,"am":6142,"amin":89,"c3":9.0,"c5":5.6,"c10":4.8,"v26":5201,"r26":20.0,"ya":8.0,"yt":-2.4,"lvl":"D","nt":-22,"sec":307,"ren":48000,"tag":"Residenziale di livello","txt":"Verde, famiglie.","mtr":"L4"},"Palomas":{"d":"Hortaleza","v24":4816.65,"am":8376,"amin":117,"c3":5.0,"c5":2.7,"c10":4.0,"v26":5483,"r26":18.9,"ya":7.3,"yt":-1.6,"lvl":"D","nt":-20,"sec":178,"ren":48000,"tag":"Buon livello","txt":"Residenziale, verde, famiglie.","mtr":"L5 L8"},"Piovera":{"d":"Hortaleza","v24":5759.74,"am":7887,"amin":111,"c3":4.7,"c5":4.0,"c10":3.7,"v26":5483,"r26":18.9,"ya":7.3,"yt":-1.6,"lvl":"D","nt":-20,"sec":178,"ren":70000,"tag":"Lusso villette","txt":"Chalet, zona benestante, molto tranquilla.","mtr":"L8"},"Canillas":{"d":"Hortaleza","v24":3972.21,"am":6700,"amin":96,"c3":4.5,"c5":3.8,"c10":5.1,"v26":5483,"r26":18.9,"ya":7.3,"yt":-1.6,"lvl":"D","nt":-20,"sec":178,"ren":38000,"tag":"Classe media","txt":"Residenziale, famiglie.","mtr":"L4 L8"},"Pinar del Rey":{"d":"Hortaleza","v24":3481.8,"am":7499,"amin":108,"c3":4.6,"c5":4.8,"c10":8.2,"v26":5483,"r26":18.9,"ya":7.3,"yt":-1.6,"lvl":"D","nt":-20,"sec":178,"ren":34000,"tag":"Residenziale","txt":"Verde, prezzi moderati.","mtr":"L4 L8"},"Apóstol Santiago":{"d":"Hortaleza","v24":3687.85,"am":7555,"amin":109,"c3":10.4,"c5":3.2,"c10":6.0,"v26":5483,"r26":18.9,"ya":7.3,"yt":-1.6,"lvl":"D","nt":-20,"sec":178,"ren":33000,"tag":"Tranquillo","txt":"Famiglie, economico per il distretto.","mtr":"L4"},"Valdefuentes":{"d":"Hortaleza","v24":5338.82,"am":11949,"amin":166,"c3":8.2,"c5":8.9,"c10":5.8,"v26":5483,"r26":18.9,"ya":7.3,"yt":-1.6,"lvl":"D","nt":-20,"sec":178,"ren":52000,"tag":"Nuovo + famiglie","txt":"Sanchinarro e Valdebebas: tutto nuovo, famiglie giovani. Serve auto.","mtr":"L4 C1"},"Villaverde Alto":{"d":"Villaverde","v24":2105.98,"am":11443,"amin":157,"c3":2.8,"c5":5.2,"c10":5.8,"v26":3302,"r26":17.8,"ya":25.0,"yt":5.2,"lvl":"D","nt":-30,"sec":199,"ren":21000,"tag":"Popolare","txt":"Periferico, tra i più economici di Madrid.","mtr":"L3"},"San Cristóbal":{"d":"Villaverde","v24":1578.57,"am":10798,"amin":146,"c3":6.8,"c5":3.6,"c10":4.8,"v26":3302,"r26":17.8,"ya":25.0,"yt":5.2,"lvl":"D","nt":-30,"sec":199,"ren":18000,"tag":"Il più economico","txt":"Il prezzo più basso di Madrid. Zona con criticità sociali.","mtr":"L3"},"Butarque":{"d":"Villaverde","v24":2577.41,"am":10406,"amin":140,"c3":7.8,"c5":6.0,"c10":4.6,"v26":3302,"r26":17.8,"ya":25.0,"yt":5.2,"lvl":"D","nt":-30,"sec":199,"ren":24000,"tag":"Periferico","txt":"Residenziale, economico.","mtr":"C5"},"Los Rosales":{"d":"Villaverde","v24":2319.11,"am":9024,"amin":122,"c3":8.3,"c5":5.4,"c10":6.3,"v26":3302,"r26":17.8,"ya":25.0,"yt":5.2,"lvl":"D","nt":-30,"sec":199,"ren":22000,"tag":"Periferico","txt":"Residenziale, economico.","mtr":"L3"},"Ángeles":{"d":"Villaverde","v24":2233.31,"am":3733,"amin":49,"c3":6.1,"c5":3.6,"c10":6.4,"v26":3302,"r26":17.8,"ya":25.0,"yt":5.2,"lvl":"D","nt":-30,"sec":199,"ren":21000,"tag":"Popolare","txt":"Residenziale, economico.","mtr":"L3"},"Casco Histórico de Vallecas":{"d":"Villa de Vallecas","v24":2372.31,"am":10259,"amin":142,"c3":7.3,"c5":2.7,"c10":3.1,"v26":3845,"r26":17.2,"ya":12.5,"yt":-0.2,"lvl":"D","nt":-28,"sec":174,"ren":24000,"tag":"Paese","txt":"Nucleo antico, atmosfera da paese.","mtr":"L1"},"Santa Eugenia":{"d":"Villa de Vallecas","v24":2557.98,"am":10608,"amin":148,"c3":6.8,"c5":4.1,"c10":5.1,"v26":3845,"r26":17.2,"ya":12.5,"yt":-0.2,"lvl":"D","nt":-28,"sec":174,"ren":26000,"tag":"Residenziale","txt":"Famiglie, economico, cercanías.","mtr":"C2 C7"},"Ensanche de Vallecas":{"d":"Villa de Vallecas","v24":3351.13,"am":11721,"amin":164,"c3":7.3,"c10":7.5,"v26":3845,"r26":17.2,"ya":12.5,"yt":-0.2,"lvl":"D","nt":-28,"sec":174,"ren":32000,"tag":"Nuovo","txt":"PAU con obra nueva, famiglie giovani.","mtr":"L1"},"Casco Histórico de Vicálvaro":{"d":"Vicálvaro","v24":2912.09,"am":9383,"amin":132,"c3":8.4,"c5":6.3,"c10":4.9,"v26":3980,"r26":16.8,"ya":8.0,"yt":-1.3,"lvl":"D","nt":-26,"sec":156,"ren":28000,"tag":"Paese","txt":"Nucleo antico, tranquillo.","mtr":"L9"},"Valdebernardo":{"d":"Vicálvaro","v24":3293.99,"am":8821,"amin":123,"c3":6.8,"c5":5.5,"c10":8.7,"v26":3980,"r26":16.8,"ya":8.0,"yt":-1.3,"lvl":"D","nt":-26,"sec":156,"ren":36000,"tag":"Residenziale nuovo","txt":"Edilizia recente, verde, famiglie.","mtr":"L9"},"Valderribas":{"d":"Vicálvaro","v24":3577.1,"am":4000,"amin":54,"c3":8.7,"c5":6.1,"v26":3980,"r26":16.8,"ya":8.0,"yt":-1.3,"lvl":"D","nt":-26,"sec":156,"ren":34000,"tag":"Residenziale","txt":"Tranquillo, ben collegato.","mtr":"L9"},"El Cañaveral":{"d":"Vicálvaro","v24":3331.02,"am":15509,"amin":214,"c3":11.4,"c10":14.8,"v26":3980,"r26":16.8,"ya":8.0,"yt":-1.3,"lvl":"D","nt":-26,"sec":156,"ren":38000,"tag":"Nuovissimo","txt":"PAU in costruzione, tutto nuovo. Molto periferico.","mtr":"—"},"Simancas":{"d":"San Blas-Canillejas","v24":3065.16,"am":6478,"amin":91,"c3":6.2,"c5":4.1,"c10":5.8,"v26":4117,"r26":18.0,"ya":7.0,"yt":-0.4,"lvl":"D","nt":-24,"sec":219,"ren":30000,"tag":"Residenziale","txt":"Popolare, ben collegato.","mtr":"L7"},"Hellín":{"d":"San Blas-Canillejas","v24":2026.74,"am":7653,"amin":107,"c3":5.0,"c5":4.9,"c10":6.8,"v26":4117,"r26":18.0,"ya":7.0,"yt":-0.4,"lvl":"D","nt":-24,"sec":219,"ren":25000,"tag":"Popolare","txt":"Economico, periferico.","mtr":"L7"},"Amposta":{"d":"San Blas-Canillejas","v24":2143.18,"am":6886,"amin":97,"c3":7.2,"c5":4.9,"c10":7.1,"v26":4117,"r26":18.0,"ya":7.0,"yt":-0.4,"lvl":"D","nt":-24,"sec":219,"ren":25000,"tag":"Popolare","txt":"Economico.","mtr":"L7"},"Arcos":{"d":"San Blas-Canillejas","v24":2560.86,"am":7568,"amin":107,"c3":-7.4,"c5":4.6,"c10":5.4,"v26":4117,"r26":18.0,"ya":7.0,"yt":-0.4,"lvl":"D","nt":-24,"sec":219,"ren":28000,"tag":"Residenziale","txt":"Popolare, tranquillo.","mtr":"L7"},"Rosas":{"d":"San Blas-Canillejas","v24":3752.62,"am":8829,"amin":124,"c3":3.9,"c5":1.7,"c10":3.3,"v26":4117,"r26":18.0,"ya":7.0,"yt":-0.4,"lvl":"D","nt":-24,"sec":219,"ren":33000,"tag":"Famiglie","txt":"Residenziale, prezzi moderati.","mtr":"L7"},"Rejas":{"d":"San Blas-Canillejas","v24":3056.14,"am":10972,"amin":150,"c3":0.9,"c5":11.0,"c10":3.9,"v26":4117,"r26":18.0,"ya":7.0,"yt":-0.4,"lvl":"D","nt":-24,"sec":219,"ren":36000,"tag":"Nuovo","txt":"Edilizia recente, vicino IFEMA.","mtr":"L8"},"Canillejas":{"d":"San Blas-Canillejas","v24":2978.61,"am":7682,"amin":107,"c3":7.9,"c5":4.7,"c10":6.5,"v26":4117,"r26":18.0,"ya":7.0,"yt":-0.4,"lvl":"D","nt":-24,"sec":219,"ren":28000,"tag":"Popolare","txt":"Economico, metro.","mtr":"L5"},"El Salvador":{"d":"San Blas-Canillejas","v24":4067.12,"am":6660,"amin":94,"c3":1.8,"c5":3.7,"c10":4.4,"v26":4117,"r26":18.0,"ya":7.0,"yt":-0.4,"lvl":"D","nt":-24,"sec":219,"ren":35000,"tag":"Classe media","txt":"Residenziale tranquillo.","mtr":"L4 L7"},"Alameda de Osuna":{"d":"Barajas","v24":3867.03,"am":9840,"amin":135,"c3":4.4,"c5":5.5,"c10":5.4,"v26":5171,"r26":17.2,"ya":16.8,"yt":4.4,"lvl":"D","nt":-20,"sec":175,"ren":52000,"tag":"Il migliore di Barajas","txt":"Verde, famiglie benestanti, parco El Capricho.","mtr":"L5"},"Casco Histórico de Barajas":{"d":"Barajas","v24":3560.6,"am":12513,"amin":172,"c3":5.0,"c5":3.6,"c10":6.0,"v26":5171,"r26":17.2,"ya":16.8,"yt":4.4,"lvl":"D","nt":-20,"sec":175,"ren":42000,"tag":"Atmosfera da paese","txt":"Nucleo storico, tranquillo.","mtr":"L8"},"Timón":{"d":"Barajas","v24":4094.58,"am":11945,"amin":165,"c3":7.8,"c5":5.7,"c10":5.4,"v26":5171,"r26":17.2,"ya":16.8,"yt":4.4,"lvl":"D","nt":-20,"sec":175,"ren":44000,"tag":"Residenziale","txt":"Vicino aeroporto: possibile rumore aerei.","mtr":"L8"},"Corralejos":{"d":"Barajas","v24":3985.7,"am":10944,"amin":152,"c3":3.6,"c5":2.0,"c10":4.3,"v26":5171,"r26":17.2,"ya":16.8,"yt":4.4,"lvl":"D","nt":-20,"sec":175,"ren":45000,"tag":"Nuovo","txt":"Edilizia recente, vicino IFEMA e aeroporto.","mtr":"L8"}};
+
+const $=i=>document.getElementById(i);
+const K=Object.keys(B).sort();
+const n=v=>{if(v==null||v==='')return null;let s=String(v).replace(/[€\s]/g,'');
+if(s.includes('.')&&s.includes(','))s=s.replace(/\./g,'').replace(',','.');
+else if(/,\d{1,2}$/.test(s))s=s.replace(',','.');else s=s.replace(/[.,](?=\d{3}(\D|$))/g,'');
+const x=Number(s);return isFinite(x)?x:null};
+const E=x=>x==null||!isFinite(x)?'—':Math.round(x).toLocaleString('it-IT')+' €';
+const Ek=x=>x==null||!isFinite(x)?'—':Math.round(x/1000)+'k €';
+const P=x=>x==null||!isFinite(x)?'—':(x>=0?'+':'')+x.toFixed(0)+'%';
+const P1=x=>x==null||!isFinite(x)?'—':(x>=0?'+':'')+x.toFixed(1)+'%';
+const N=x=>Math.round(x).toLocaleString('it-IT');
+const nrm=s=>(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+const ord=i=>i===1?'1°':i===2?'2°':i===3?'3°':i+'°';
+
+// ===== CLASSIFICHE precalcolate =====
+K.forEach(k=>{let z=B[k];z.yld=z.r26*12/z.v26*100});
+const ALL=K.slice();
+const byYa=ALL.filter(k=>B[k].ya!=null).sort((a,b)=>B[b].ya-B[a].ya);
+const byYld=ALL.sort((a,b)=>B[b].yld-B[a].yld);
+const byPr=ALL.slice().sort((a,b)=>B[a].v26-B[b].v26);
+const byRen=ALL.filter(k=>B[k].ren).sort((a,b)=>B[b].ren-B[a].ren);
+const QUAL=ALL.filter(k=>B[k].v26>=6000);
+const qByYa=QUAL.filter(k=>B[k].ya!=null).sort((a,b)=>B[b].ya-B[a].ya);
+const qByYld=QUAL.slice().sort((a,b)=>B[b].yld-B[a].yld);
+function inDist(k){return ALL.filter(x=>B[x].d===B[k].d)}
+function rank(arr,k){return arr.indexOf(k)+1}
+const MAD_V=6471, MAD_R=23.3, MAD_YLD=MAD_R*12/MAD_V*100, MAD_REN=43643;
+
+(function(){let g={};K.forEach(k=>(g[B[k].d]=g[B[k].d]||[]).push(k));let h='';
+Object.keys(g).sort().forEach(d=>{h+='<optgroup label="'+d+'">';g[d].sort().forEach(k=>h+='<option>'+k+'</option>');h+='</optgroup>'});
+$('b').innerHTML=h;$('b').value='Arapiles'})();
+
+$('gr').oninput=()=>{let g=n($('gr').value);if(g)$('inc').value=Math.round(g*0.67/12);render()};
+
+function cleanPaste(x){
+ return String(x||'')
+  .replace(/<br\s*\/?>/gi,'\n')
+  .replace(/<\/li>/gi,'\n')
+  .replace(/<\/p>/gi,'\n')
+  .replace(/<[^>]+>/g,' ')
+  .replace(/&nbsp;|\u00a0/gi,' ')
+  .replace(/&amp;/gi,'&')
+  .replace(/[ \t]+/g,' ')
+  .replace(/\n\s+/g,'\n');
+}
+function parse(x){
+ let t=cleanPaste(x),o={},m;
+ // Prezzo: prima cerca l'etichetta precisa, poi il riepilogo iniziale
+ m=t.match(/Prezzo dell['’]immobile\s*:?\s*(\d{2,3}(?:[.,]\d{3})+)\s*€/i)
+   ||t.match(/(?:Appartamento|Piso|Attico|Ático)[^\n]{0,180}?(\d{2,3}(?:[.,]\d{3})+)\s*€/i)
+   ||t.match(/\b(\d{2,3}(?:[.,]\d{3})+)\s*€/);
+ if(m)o.p=n(m[1]);
+ // Superficie: privilegia la riga commerciali
+ m=t.match(/(\d{2,4}(?:[.,]\d+)?)\s*m²\s*commerciali/i)
+   ||t.match(/(\d{2,4}(?:[.,]\d+)?)\s*m²\s*construidos/i)
+   ||t.match(/\b(\d{2,4})\s*m²/i);
+ if(m)o.mq=n(m[1]);
+ m=t.match(/Sup[^\n]{0,25}[ÚUu]til Interior\s*:?\s*(\d+[.,]\d+)/i)
+   ||t.match(/superficie utile(?: interna)?\D{0,20}(\d+[.,]\d+)/i);if(m)o.mu=n(m[1]);
+ m=t.match(/(\d+)\s*(?:cam\.?|camere|habitaciones?|dormitorios?)/i);if(m)o.cam=+m[1];
+ m=t.match(/(\d+)\s*(?:bagni|bagno|baños?|cuartos? de baño)/i);if(m)o.bag=+m[1];
+ // Piano numerico oppure rialzato/basso/attico
+ if(/piano rialzato|entreplanta/i.test(t))o.pi='Rialzato';
+ else if(/piano terra|planta baja|\bbajo\b/i.test(t))o.pi='Terra';
+ else if(/attico|ático/i.test(t))o.pi='Attico';
+ else {m=t.match(/(\d+)[ \t]*[ºª°]?[ \t]*(?:piano|planta)/i);if(m)o.pi=m[1];}
+ m=t.match(/(?:costruito|construido|año)\D{0,18}(19\d\d|20[0-2]\d)/i);if(m)o.an=m[1];
+ m=t.match(/(?:classe|clase)[^A-G]{0,20}\b([A-G])\b/i);if(m)o.en=m[1].toUpperCase();
+ if(/con ascensor|con ascensore/i.test(t))o.asc='1';if(/senza ascensore|sin ascensor/i.test(t))o.asc='0';
+ if(/\besterno\b|\bexterior\b/i.test(t))o.ext='1';else if(/(?:piano|planta)[^\n]{0,30}(?:interno|interior)/i.test(t))o.ext='0';
+ if(/aria condizionata|aire acondicionado|bomba de calor/i.test(t))o.ac='1';
+ if(/terrazz|terraza/i.test(t))o.te='2';else if(/balcon|balcón/i.test(t))o.te='1';
+ if(/garage|posto auto|garaje|plaza de aparcamiento/i.test(t))o.ga='1';
+ if(/orientamento nord[^\n]{0,15}ovest|orientaci[oó]n noroeste|orientamento nord,?\s*ovest/i.test(t))o.or='NO';
+ else if(/orientamento sud[^\n]{0,15}ovest|orientaci[oó]n suroeste/i.test(t))o.or='SO';
+ else if(/orientamento sud|orientaci[oó]n sur/i.test(t))o.or='S';
+ else if(/orientamento nord|orientaci[oó]n norte/i.test(t))o.or='N';
+ else if(/orientamento ovest|orientaci[oó]n oeste/i.test(t))o.or='O';
+ else if(/orientamento est|orientaci[oó]n este/i.test(t))o.or='E';
+ if(/nuova costruzione|obra nueva/i.test(t))o.op='Nuova costruzione';
+ if(/cooperativa/i.test(t))o.co='1';
+ // Stato in IT/ES/EN
+ if(/a reformar|da ristrutturare|to reform|needs renovation|para reformar/i.test(t))o.st='850';
+ else if(/da rinfrescare|actualizar|needs updating/i.test(t))o.st='450';
+ else if(/reformado|ristrutturato|renovated|completamente ristrutturato/i.test(t))o.st='0';
+ else if(/buono stato|buen estado|good condition/i.test(t))o.st='150';
+ m=t.match(/(?:consegna|entrega)[^\d]{0,20}(20\d\d)/i);if(m)o.dl=m[1];
+ m=t.match(/comunidad[^\d]{0,20}(\d{2,4})/i);if(m)o.cm=+m[1];
+ if(/non include[^\n]{0,350}(?:agenzia|intermediazione immobiliare)|no incluye[^\n]{0,350}(?:agencia|intermediaci[oó]n)/i.test(t)){o.ag='3';o.agx='1'}
+ let s=nrm(t),best='',loc;
+ // Priorità ai campi strutturati dell'annuncio, per evitare che footer, link o annunci simili cambino barrio
+ loc=t.match(/(?:Quartiere|Barrio)\s+([^\n<]{3,60})/i)||t.match(/Appartamento in vendita a\s+([^\n<]{3,60})/i)||t.match(/Piso en venta en\s+([^\n<]{3,60})/i);
+ if(loc){let wanted=nrm(loc[1]);K.forEach(k=>{let kk=nrm(k);if(wanted.includes(kk)||kk.includes(wanted))best=k});}
+ if(!best)K.forEach(k=>{let kk=nrm(k);if(kk.length>3&&s.includes(kk)&&kk.length>best.length)best=k});
+ let al={bernabeu:'Hispanoamérica',malasana:'Universidad',chueca:'Justicia',lavapies:'Embajadores','arturo soria':'San Juan Bautista'};
+ if(!best)for(let a in al)if(s.includes(a)){best=al[a];break}
+ if(best)o.b=best;else o.b='';
+ o._clean=t;
+ return o;
+}
+
+function rata(c,t,y){let r=t/1200,N=y*12;return r?c*r/(1-Math.pow(1+r,-N)):c/N}
+
+function calc(){
+let p=n($('p').value),mq=n($('mq').value);if(!p||!mq)return null;
+let mu=n($('mu').value),k=$('b').value,z=B[k];
+let nuovo=$('op').value==='Nuova costruzione',coop=$('co').value==='1';
+let tin=n($('tin').value),yr=n($('yr').value),pz=n($('pz').value)/100;
+let agp=(n($('ag').value)||0)/100, age=n($('age').value), hy=n($('hy').value)||10;
+let ca=n($('ca').value)||0,fa=n($('fa').value)||0,rs=n($('rs').value)||0,now=n($('now').value)||1100;
+let inc=n($('inc').value);
+let disp=ca+fa-rs, mio=Math.max(0,ca-rs);
+let lav=n($('st').value)*mq;
+let mutuo=Math.min(p,p*pz)*0.8, ant=p-mutuo;
+let tax=nuovo?p*0.1075:p*0.06, spese=p*(nuovo?0.015:0.02), agf=age!=null?age:p*agp;
+let purchaseCash=ant+tax+spese+agf;
+let cash=purchaseCash+lav;
+let daMamma=Math.max(0,purchaseCash-mio);
+let projectGap=Math.max(0,cash-disp);
+let m=rata(mutuo,tin,yr);
+let com=n($('cm').value)||Math.round(mq*1.9);
+let ibi=p*0.55*0.00456/12, ass=18, man=mq*8/12;
+let mese=m+com+ibi+ass+man, extra=mese-now;
+let rpm=n($('ro').value)||z.r26;
+let base=mu?mu*1.25:mq;
+let aff=rpm*Math.min(mq,base);
+let cf=aff*0.94-com-ibi-ass-man-m;
+let inv=p+tax+spese+lav+agf;
+let yldL=aff*12/inv*100, yldN=(aff*12*0.94-(com+ibi+ass+man)*12)/inv*100;
+let ppm=p/mq, ref=z.v26, diff=(ppm-ref)/ref*100;
+let rog=ref*(1+z.nt/100), diffRog=(ppm-rog)/rog*100;
+let tettoZona=ref*mq;
+let tettoCash=disp/((1-Math.min(1,pz)*0.8)+(nuovo?0.1075:0.06)+(nuovo?0.015:0.02)+(age!=null?age/p:agp));
+let tettoBanca=null;
+if(inc){let mx=inc*0.35-com-ibi-ass;let r=tin/1200,NN=yr*12;
+let cap=mx>0?mx*(1-Math.pow(1+r,-NN))/r:0;tettoBanca=cap/(0.8*Math.min(1,pz))}
+let offri=Math.min(tettoZona,tettoCash,tettoBanca||Infinity);
+let vincolo=offri===tettoBanca?'la banca':offri===tettoCash?'il cash':'il prezzo di zona';
+let eff=mu?mu/mq*100:null;
+let cr=Math.min(z.c3!=null?z.c3:3,6);
+let valF=p*Math.pow(1+cr/100,hy);
+let r12=tin/1200,Nm=yr*12,nh=hy*12;
+let saldoF=nh>=Nm?0:mutuo*(Math.pow(1+r12,Nm)-Math.pow(1+r12,nh))/(Math.pow(1+r12,Nm)-1);
+let patF=valF-saldoF;
+let intTot=m*nh-(mutuo-saldoF);
+let costoTot=cash+intTot+(com+ibi+ass+man)*nh;
+let affTot=now*nh;
+return{p,mq,mu,eff,k,z,purchaseCash,projectGap,nuovo,coop,ant,tax,spese,agf,agp,age,lav,cash,daMamma,mio,disp,mutuo,m,com,ibi,ass,man,
+mese,extra,now,aff,cf,inv,yldL,yldN,ppm,ref,diff,rog,diffRog,tettoZona,tettoCash,tettoBanca,offri,vincolo,
+inc,rpm,cr,hy,valF,saldoF,patF,intTot,costoTot,affTot,tin,yr,pz,ca,fa,rs}}
+
+
+function adFacts(t){
+ let F=[]; if(!t)return F;
+ const add=(title,text,kind='')=>F.push({title,text,kind});
+ if(/tre in origine|tres en origen/i.test(t))add('2 camere, prima erano 3','La terza camera è stata incorporata negli spazi attuali. Valuta se la distribuzione attuale ti serve davvero e verifica se il ripristino è semplice.','hot');
+ if(/terrazza coperta|terraza cubierta/i.test(t))add('Terrazza coperta','Più utilizzabile tutto l’anno, ma controlla se la chiusura è autorizzata e se i metri sono inclusi nei 71 m².');
+ if(/cucina indipendente/i.test(t))add('Cucina indipendente','Buona per vivere, ma su 71 m² può ridurre la zona giorno. Ha accesso diretto alla terrazza.');
+ if(/stenditoio indipendente|tendedero independiente/i.test(t))add('Stenditoio separato','Dettaglio pratico utile: bucato fuori dalla cucina e dalla zona notte.');
+ if(/idromassaggio|hidromasaje/i.test(t))add('Doccia con idromassaggio','Comfort marginale. Controlla pressione dell’acqua, manutenzione e stato dell’impianto.');
+ if(/porta[^\n]{0,40}blindata|puerta[^\n]{0,40}blindada/i.test(t))add('Porta blindata','Elemento positivo per sicurezza, ma la qualità reale dipende da serratura, cilindro e installazione.');
+ if(/parquet|tarima/i.test(t))add('Pavimento in legno','Aspetto caldo, ma in un edificio del 1950 controlla rumori, pendenze e stato del sottofondo.');
+ if(/Climalit|doppi vetri|doble acristalamiento/i.test(t))add('Doppi vetri Climalit','Aiutano contro rumore e dispersione. Controlla lo stato dei telai in alluminio e la tenuta delle guarnizioni.');
+ if(/gas naturale|gas natural/i.test(t))add('Riscaldamento autonomo a gas','Controlli tu i consumi. Chiedi età e manutenzione della caldaia e certificato dell’impianto.');
+ if(/pompa di calore|bomba de calor/i.test(t))add('Aria condizionata solo in soggiorno','Il soggiorno è coperto; le camere potrebbero restare calde d’estate. Verifica predisposizione per aggiungere split.','hot');
+ let m=t.match(/Consumo:\s*([\d.,]+)\s*kWh/i); if(m)add('Consumo energetico '+m[1]+' kWh/m²/anno','È un consumo alto rispetto a un edificio efficiente. Chiedi bollette reali di gas ed elettricità degli ultimi 12 mesi.','risk');
+ m=t.match(/Emissioni:\s*([\d.,]+)\s*kg/i); if(m)add('Emissioni '+m[1]+' kg CO₂/m²/anno','Dato energetico da leggere insieme al consumo. Conferma la lettera della certificazione, che nell’annuncio non è riportata.','hot');
+ if(/oltre 20 anni di esperienza|m[aá]s de 20 a[nñ]os/i.test(t))add('Agenzia con oltre 20 anni dichiarati','L’esperienza è dichiarata dall’inserzionista. Verifica comunque la fee, il mandato e cosa include davvero il servizio.');
+ if(/iscritta al RAIN|inscrita en el RAIN/i.test(t))add('Agenzia iscritta al RAIN','È un’informazione utile sulla registrazione professionale dichiarata. Chiedi numero di iscrizione e fattura della commissione.');
+ if(/aggiornato\s+([0-9]+)\s+giorni/i.test(t)){let d=+(t.match(/aggiornato\s+([0-9]+)\s+giorni/i)||[])[1];add('Annuncio aggiornato '+d+' giorni fa',d<=30?'Annuncio recente: il venditore può avere meno urgenza e meno margine iniziale.':'Annuncio meno recente: chiedi quante visite e offerte ha ricevuto.');}
+ if(/aggiornato più di un anno fa|actualizado hace más de un año/i.test(t))add('Annuncio vecchio o anomalo','La scheda indica più di un anno dall’ultimo aggiornamento, anche se le statistiche riportano una data recente. Verifica disponibilità, prezzo e motivo della permanenza online.','risk');
+ if(/ideal for an office|ideale? per un ufficio|ideal para oficina/i.test(t))add('Presentato come ideale per ufficio','Potrebbe avere distribuzione o condizioni d’uso poco residenziali. Verifica uso registrale, abitabilità, finestre delle camere e possibilità reale di mutuo residenziale.','risk');
+ return F;
+}
+
+function socioCard(k,z){
+ const city=43643, vals=K.filter(x=>B[x].ren).map(x=>B[x].ren).sort((a,b)=>a-b);
+ const r=z.ren||city, pctile=Math.round(vals.filter(v=>v<=r).length/vals.length*100);
+ const ratio=r/city, dist=K.filter(x=>B[x].d===z.d&&B[x].ren), distAvg=dist.length?dist.reduce((s,x)=>s+B[x].ren,0)/dist.length:city;
+ let cls='mid', label='Zona a reddito medio', read='Il profilo economico è vicino alla media cittadina.';
+ if(ratio>=1.75){cls='rich';label='Zona molto benestante';read='Reddito nettamente superiore alla media: domanda più solida, servizi privati e prezzi più resilienti, ma rendimento da affitto spesso più basso.';}
+ else if(ratio>=1.30){cls='rich';label='Zona benestante';read='Reddito sopra la media: maggiore capacità di spesa locale e pubblico acquirente più ampio nella fascia alta.';}
+ else if(ratio>=0.90){cls='mid';label='Zona di classe media';read='Profilo economico vicino alla media di Madrid: domanda residenziale ampia e meno dipendente dal segmento di lusso.';}
+ else if(ratio>=0.65){cls='low';label='Zona a reddito medio-basso';read='Reddito sotto la media: prezzi generalmente più accessibili e rendimento potenziale più alto, con domanda più sensibile a rata, lavoro e trasporti.';}
+ else {cls='low';label='Zona a reddito basso';read='Reddito molto sotto la media: accessibilità elevata, ma maggiore sensibilità economica degli inquilini e più attenzione a microzona, servizi e vulnerabilità urbana.';}
+ const homePrice=z.v26*70, years=homePrice/r;
+ const rentIncome=z.r26*70*12/r*100;
+ const rel=(r-city)/city*100, distRel=(r-distAvg)/distAvg*100;
+ const wealthy=pctile>=90?'È nel 10% più alto per reddito tra i barrios presenti nell’app.':pctile<=10?'È nel 10% più basso per reddito tra i barrios presenti nell’app.':'Si colloca circa al '+pctile+'° percentile di reddito tra i barrios presenti nell’app.';
+ return '<div class="socio '+cls+'"><div class="socio-title">'+label+'</div><div class="socio-sub">'+read+' '+wealthy+'</div><div class="socio-grid">'+
+ '<div class="socio-k"><div class="l">Reddito medio</div><div class="v">'+N(r)+' €/anno</div><div class="x">'+P1(rel)+' vs Madrid ('+N(city)+' €)</div></div>'+
+ '<div class="socio-k"><div class="l">Vs proprio distretto</div><div class="v">'+P1(distRel)+'</div><div class="x">media '+z.d+': '+N(distAvg)+' €</div></div>'+
+ '<div class="socio-k"><div class="l">Accessibilità acquisto</div><div class="v">'+years.toFixed(1)+' redditi annui</div><div class="x">casa tipo 70 m² / reddito medio</div></div>'+
+ '<div class="socio-k"><div class="l">Peso affitto teorico</div><div class="v">'+rentIncome.toFixed(0)+'%</div><div class="x">70 m², prima di imposte e spese</div></div></div>'+
+ '<div class="socio-note"><b>Come leggerlo:</b> “benestante” descrive il reddito medio del territorio, non ogni residente. Reddito, prezzo e vulnerabilità misurano cose diverse. Per una valutazione completa vanno letti insieme a istruzione, occupazione, salute, qualità urbana e servizi. Le etichette sono derivate confrontando il reddito del barrio con la media di Madrid, non sono classificazioni ufficiali.</div></div>';
+}
+
+function deepZone(k,z){
+ if(k==='Valdezarza') return '<div class="zonebox"><div class="ztitle">Come si vive davvero a Valdezarza</div><strong>Profilo:</strong> residenziale modesto e tranquillo, vicino alla Dehesa de la Villa e al parco Rodríguez Sahagún. Poco turistico e con poca vita notturna: adatto a vita quotidiana, meno a chi vuole uscire a piedi tra ristoranti e locali.<br><br><strong>Trasporto:</strong> l’annuncio dichiara Metro Valdezarza L7 a 9 minuti e sette linee EMT. Calle Sánchez Preciado è una strada residenziale a senso unico; una fermata autobus risulta a circa 100 m.<br><br><strong>Edifici:</strong> stock mediamente anziano. Il Comune segnala edifici con età media superiore a 60 anni e una mancanza diffusa di ascensori. Questo spiega il prezzo più basso, ma aumenta il rischio di lavori condominiali e limita la rivendibilità dei piani alti.<br><br><strong>Rigenerazione urbana:</strong> la colonia è inclusa nel Plan Regenera. Il Comune prevede interventi su accessibilità, sicurezza e spazi interblocco. Potenziale beneficio nel tempo, ma prima chiedi se lo stabile o gli spazi comuni sono direttamente coinvolti e se sono previste derramas.<br><br><strong>Mercato:</strong> vendita 2026 circa 4.989 €/m² su Fotocasa, in calo del 6,3% annuo a settembre. Affitto circa 19 €/m²/mese. Questo appartamento a 4.634 €/m² è sotto l’offerta media, ma il 3º senza ascensore giustifica una parte dello sconto.<br><br><strong>La lettura per te:</strong> migliora molto la tua qualità di vita rispetto alla stanza e può affittarsi, ma ti allontana dalla vita di Chamberí. Il vero rischio non è il barrio: sono il 3º senza ascensore, l’edificio del 1950 e la commissione d’agenzia non quantificata.</div>';
+ return '<div class="zonebox"><div class="ztitle">Come leggere la zona</div><strong>Carattere:</strong> '+(z.txt||'')+'<br><br><strong>Collegamenti:</strong> '+(z.mtr&&z.mtr!=='—'?'metro '+z.mtr:'verifica la fermata più vicina')+'; '+z.amin+' minuti a piedi da Alonso Martínez.<br><br><strong>Mercato:</strong> annunci 2026 a '+N(z.v26)+' €/m², affitto '+z.r26+' €/m²/mese. Confronta sempre la via e lo stato dello stabile: due case nello stesso barrio possono differire molto per luce, ascensore, rumore e lavori condominiali.</div>';
+}
+
+
+
+function areaScore(k){let z=B[k], price=z.v26, y=z.r26*12/price*100, g=z.ya!=null?z.ya:(z.c3||0), central=Math.max(0,100-z.amin*.75), affordability=Math.max(0,Math.min(100,(450000-price*60)/2200+50)), income=Math.min(100,(z.ren||43643)/800);return Math.round(.30*affordability+.23*Math.max(0,Math.min(100,(y-2.5)*35))+.17*Math.max(0,Math.min(100,(g+3)*4))+.18*central+.12*income)}
+function areaComment(k){let z=B[k],y=z.r26*12/z.v26*100,g=z.ya!=null?z.ya:(z.c3||0),s='';if(z.v26>9000)s='Zona premium: alta liquidità e prestigio, rendimento contenuto.';else if(y>=4.8)s='Rendimento elevato per Madrid, con maggiore attenzione a microzona e qualità dello stabile.';else if(y>=4)s='Buon equilibrio tra prezzo, domanda di affitto e rivendibilità.';else s='Rendimento moderato: il valore dipende soprattutto da posizione e qualità.';s+=' Crescita '+P1(g)+', affitto '+z.r26+' €/m² e casa tipo 60 m² circa '+E(z.v26*60)+'.';return s}
+
+function marketStats(k){
+ const z=B[k], priceOrder=K.slice().sort((a,b)=>B[b].v26-B[a].v26), rentOrder=K.slice().sort((a,b)=>B[b].r26-B[a].r26);
+ const pr=priceOrder.indexOf(k)+1, rr=rentOrder.indexOf(k)+1, y=z.r26*12/z.v26*100, rentVs=(z.r26/MAD_R-1)*100, priceVs=(z.v26/MAD_V-1)*100, rentGrowth=z.yt;
+ return {pr,rr,y,rentVs,priceVs,rentGrowth};
+}
+function marketRelation(k){
+ const z=B[k],m=marketStats(k), rentGrowthText=m.rentGrowth==null?'crescita affitto non disponibile':('affitto '+P1(m.rentGrowth)+' nell’ultimo anno');
+ let relation;
+ if(m.priceVs>15&&m.rentVs>10)relation='È una zona cara, ma anche l’affitto è alto. Una parte del prezzo più elevato è sostenuta dalla domanda locativa; il rendimento resta '+m.y.toFixed(2)+'%.';
+ else if(m.priceVs>15&&m.rentVs<=10)relation='È una zona cara rispetto a Madrid, mentre l’affitto non cresce nella stessa proporzione. Il rendimento tende quindi a comprimersi.';
+ else if(m.priceVs<=15&&m.rentVs>10)relation='Il prezzo di acquisto è relativamente più contenuto dell’affitto: è una combinazione favorevole al rendimento.';
+ else relation='Prezzo e affitto sono entrambi sotto o vicini alla media di Madrid. La convenienza dipende soprattutto da domanda locale, stato della casa e liquidità futura.';
+ return '<div class="zone-story"><div class="zone-stat"><div class="zl">Prezzo</div><div class="zv">'+N(z.v26)+' €/m²</div><div class="zh">'+ord(m.pr)+' più costoso su '+K.length+' · '+P1(m.priceVs)+' vs Madrid</div></div><div class="zone-stat"><div class="zl">Affitto</div><div class="zv">'+z.r26+' €/m²</div><div class="zh">'+ord(m.rr)+' più alto su '+K.length+' · '+P1(m.rentVs)+' vs Madrid</div></div><div class="zone-stat"><div class="zl">Crescita vendita</div><div class="zv">'+P1(z.ya!=null?z.ya:(z.c3||0))+'</div><div class="zh">variazione ultimo anno</div></div><div class="zone-stat"><div class="zl">Crescita affitto</div><div class="zv">'+(m.rentGrowth==null?'n.d.':P1(m.rentGrowth))+'</div><div class="zh">variazione ultimo anno</div></div></div><div class="relation"><b>Prezzo e affitto letti insieme.</b> '+relation+' Il rapporto affitto/prezzo teorico della zona è '+m.y.toFixed(2)+'%. '+rentGrowthText+'.</div>';
+}
+function propertyAreaView(d){
+ let ideal=K.slice().sort((a,b)=>areaScore(b)-areaScore(a)),idealPos=ideal.indexOf(d.k)+1;
+ let cheap=K.slice().sort((a,b)=>B[a].v26-B[b].v26),cheapPos=cheap.indexOf(d.k)+1,expensivePos=cheap.length-cheapPos+1,pct=Math.round(expensivePos/cheap.length*100);
+ let z=d.z,y=z.r26*12/z.v26*100, comps=ideal.filter(x=>x!==d.k&&B[x].v26<=z.v26*1.12&&B[x].amin<=z.amin+20).slice(0,3);
+ let priceRead=expensivePos<=Math.ceil(cheap.length*.25)?'<b>È caro:</b> '+d.k+' è il '+ord(expensivePos)+' barrio più costoso su '+cheap.length+', quindi rientra nel 25% più caro di Madrid.':expensivePos<=Math.ceil(cheap.length*.5)?'<b>Prezzo medio-alto:</b> '+d.k+' è il '+ord(expensivePos)+' più costoso su '+cheap.length+'.':'<b>Prezzo accessibile:</b> '+d.k+' è nella metà meno cara dei barrios analizzati.';
+ return marketRelation(d.k)+'<div class="price-position">'+priceRead+' Il prezzo medio è '+N(z.v26)+' €/m².</div><div class="comparebox"><b>Compatibilità con ciò che cerchi: '+areaScore(d.k)+'/100 · posizione '+idealPos+' su '+ideal.length+'</b><br>Il punteggio considera budget, rendimento, crescita, distanza da Alonso Martínez, reddito e centralità. '+areaComment(d.k)+'<br><br>'+(comps.length?'Zone da confrontare con lo stesso criterio: '+comps.map(x=>'<b>'+x+'</b> ('+areaScore(x)+'/100, '+N(B[x].v26)+' €/m²)').join(' · '):'Nessuna alternativa simile emerge dai filtri attuali.')+'</div>'}
+function setHouseField(id,value){let el=$(id);if(!el)return;el.value=value;render()}
+function editableHouse(d){return '<div class="edit-physical">'+
+ '<label>Piano<input value="'+($('pi').value||'')+'" onchange="setHouseField(\'pi\',this.value)"></label>'+
+ '<label>Camere<input type="number" value="'+($('cam').value||'')+'" onchange="setHouseField(\'cam\',this.value)"></label>'+
+ '<label>Bagni<input type="number" value="'+($('bag').value||'')+'" onchange="setHouseField(\'bag\',this.value)"></label>'+
+ '<label>Affaccio<select onchange="setHouseField(\'ext\',this.value)"><option value="1" '+($('ext').value==='1'?'selected':'')+'>Esterno</option><option value="0" '+($('ext').value==='0'?'selected':'')+'>Interno</option></select></label>'+
+ '<label>Ascensore<select onchange="setHouseField(\'asc\',this.value)"><option value="1" '+($('asc').value==='1'?'selected':'')+'>Sì</option><option value="0" '+($('asc').value==='0'?'selected':'')+'>No</option></select></label>'+
+ '<label>Balcone / terrazza<select onchange="setHouseField(\'te\',this.value)"><option value="0" '+($('te').value==='0'?'selected':'')+'>Assente</option><option value="1" '+($('te').value==='1'?'selected':'')+'>Balcone</option><option value="2" '+($('te').value==='2'?'selected':'')+'>Terrazza</option></select></label>'+
+ '<label>Orientamento<select onchange="setHouseField(\'or\',this.value)">'+[['','Da verificare'],['S','Sud'],['SO','Sud-ovest'],['O','Ovest'],['SE','Sud-est'],['E','Est'],['N','Nord'],['NO','Nord-ovest'],['NE','Nord-est']].map(x=>'<option value="'+x[0]+'" '+($('or').value===x[0]?'selected':'')+'>'+x[1]+'</option>').join('')+'</select></label>'+
+ '<label>Aria condizionata<select onchange="setHouseField(\'ac\',this.value)"><option value="1" '+($('ac').value==='1'?'selected':'')+'>Sì</option><option value="0" '+($('ac').value==='0'?'selected':'')+'>No</option></select></label>'+
+ '<label>Garage<select onchange="setHouseField(\'ga\',this.value)"><option value="0" '+($('ga').value==='0'?'selected':'')+'>No</option><option value="1" '+($('ga').value==='1'?'selected':'')+'>Sì</option></select></label>'+
+ '<label>Anno costruzione<input type="number" value="'+($('an').value||'')+'" onchange="setHouseField(\'an\',this.value)"></label>'+
+ '<label>Stato lavori<select onchange="setHouseField(\'st\',this.value)">'+Array.from($('st').options).map(o=>'<option value="'+o.value+'" '+($('st').value===o.value?'selected':'')+'>'+o.text+'</option>').join('')+'</select></label>'+
+ '<label>m² utili<input type="number" value="'+($('mu').value||'')+'" onchange="setHouseField(\'mu\',this.value)"></label>'+
+ '</div>'}
+function rankingsHtml(){let ds=[...new Set(K.map(k=>B[k].d))].sort();return '<div class="rank-tools"><input id="rankSearch" placeholder="Cerca barrio o distretto" oninput="renderRankings()"><select id="rankSort" onchange="renderRankings()"><option value="score">Ideali per me</option><option value="price">Prezzo crescente</option><option value="yield">Rendimento</option><option value="growth">Crescita</option><option value="income">Reddito</option></select><select id="rankDistrict" onchange="renderRankings()"><option value="">Tutti i distretti</option>'+ds.map(x=>'<option>'+x+'</option>').join('')+'</select></div><div id="rankList" class="rank-list"></div><div class="rank-note">La classifica usa i dati già presenti nell’app: prezzo 2026, affitto, rendimento, crescita, distanza da Alonso Martínez, reddito e compatibilità con un budget di 450.000 €. Nei barrios marcati come dato distrettuale, il confronto è preliminare.</div>'}
+function renderRankings(){let q=($('rankSearch')?.value||'').toLowerCase(),d=$('rankDistrict')?.value||'',s=$('rankSort')?.value||'score',arr=K.filter(k=>(!q||(k+' '+B[k].d).toLowerCase().includes(q))&&(!d||B[k].d===d));arr.sort((a,b)=>s==='price'?B[a].v26-B[b].v26:s==='yield'?(B[b].r26*12/B[b].v26)-(B[a].r26*12/B[a].v26):s==='growth'?(B[b].ya||B[b].c3||0)-(B[a].ya||B[a].c3||0):s==='income'?(B[b].ren||0)-(B[a].ren||0):areaScore(b)-areaScore(a));let el=$('rankList');if(el)el.innerHTML=arr.map((k,i)=>{let z=B[k],y=z.r26*12/z.v26*100,g=z.ya!=null?z.ya:(z.c3||0);return '<div class="rank-card"><div class="rank-no">'+(i+1)+'</div><div><div class="rank-name">'+k+' · '+z.d+'</div><div class="bar"><span class="pill">'+N(z.v26)+' €/m²</span><span class="pill">affitto '+z.r26+' €/m²</span><span class="pill">affitto '+(z.yt==null?'n.d.':P1(z.yt))+'</span><span class="pill">rendimento '+y.toFixed(2)+'%</span><span class="pill">vendita '+P1(g)+'</span><span class="pill">'+z.amin+' min</span></div><div class="rank-desc">'+(z.txt||areaComment(k))+' '+areaComment(k)+'</div></div><div class="rank-score">'+areaScore(k)+'/100</div></div>'}).join('')}
+
+function finalComment(d,z,sconto){
+ let risks=[], strengths=[];
+ const floor=n($('pi').value)||0, noLift=$('asc').value==='0', old=n($('an').value), agencyUnknown=d.agf>0&&!$('age').value;
+ if(noLift&&floor>=3)risks.push('3º piano senza ascensore: restringe inquilini e compratori futuri');
+ else if(noLift)risks.push('assenza di ascensore');
+ if(old&&old<1980)risks.push('edificio del '+old+': ITE, tubature, impianto elettrico e derramas diventano decisivi');
+ if(agencyUnknown)risks.push('commissione di agenzia ancora stimata, quindi cash finale non chiuso');
+ if(d.diffRog>15)risks.push('prezzo oltre il riferimento di chiusura della zona');
+ if(['N','NE','NO'].includes($('or').value))risks.push('esposizione nord: luce e comfort termico da verificare dal vivo');
+ if(d.cash<=d.disp)strengths.push('operazione finanziariamente coperta');
+ if(d.yldL>=4)strengths.push('rendimento lordo '+d.yldL.toFixed(2)+'%, interessante per mantenere la mobilità');
+ if(d.diff<=0)strengths.push('prezzo sotto la media degli annunci della zona');
+ if($('te').value==='2')strengths.push('terrazza, elemento utile per vivere e rivendere');
+ let cls='go', title='La visiterei e preparerei un’offerta';
+ if(d.purchaseCash>d.disp){cls='no';title='Il rogito supera il cash disponibile';}
+ else if(risks.length>=2){cls='mid';title='La visiterei solo a condizioni precise';}
+ else if(sconto>20&&! (d.diff<=-35)){cls='no';title='La terrei fuori dalla shortlist';}
+ else if(d.diff<=-35){cls='mid';title='Verifica documentale prima di decidere';}
+ let body='';
+ if(cls==='no'&&d.purchaseCash>d.disp)body='Il cash al rogito supera la disponibilità preservando la riserva. Il prezzo massimo finanziariamente sostenibile è circa '+E(d.tettoCash)+'.';
+ else if(cls==='no')body='La distanza tra prezzo e valore sostenibile è troppo ampia rispetto ai vantaggi dell’immobile.';
+ else body=(strengths.length?'La base positiva è: '+strengths.join('; ')+'. ':'')+(risks.length?'La decisione dipende da '+risks.join('; ')+'.':'I principali dati risultano coerenti e restano da completare le verifiche documentali.');
+ let next='';
+ if(cls==='mid')next='<b>Passo successivo:</b> visita di giorno e nel tardo pomeriggio; chiedi commissione IVA inclusa, ITE, verbali della comunidad e derramas. Offerta iniziale '+E(Math.min(d.offri,d.p)*0.95)+', tetto '+E(Math.min(d.offri,d.p))+'.';
+ else if(cls==='go')next='<b>Passo successivo:</b> verifica documenti e comparabili della stessa via. Offerta iniziale '+E(Math.min(d.offri,d.p)*0.96)+', tetto '+E(Math.min(d.offri,d.p))+'.';
+ else next='<b>Passo successivo:</b> usa '+E(d.offri)+' come limite e concentra la ricerca su alternative più liquide.';
+ return '<div class="finalbox '+cls+'"><div class="ey">Il mio commento finale</div><div class="ft">'+title+'</div><div class="fb">'+body+'</div><div class="next">'+next+'</div></div>';
+}
+
+
+function houseSummary(d,z){
+ const floor=$('pi').value||'Da verificare', beds=$('cam').value||'—', baths=$('bag').value||'—';
+ const lift=$('asc').value==='1'?'Con ascensore':'Senza ascensore';
+ const outside=$('ext').value==='1'?'Esterno':'Interno';
+ const om={S:'Sud',SO:'Sud-ovest',O:'Ovest',SE:'Sud-est',E:'Est',N:'Nord',NO:'Nord-ovest',NE:'Nord-est'};const orient=om[$('or').value]||'Da verificare';
+ const terrace=$('te').value==='2'?'Terrazza':$('te').value==='1'?'Balcone':'Nessun balcone o terrazza';
+ return '<div class="house-summary"><div class="house-head"><div><h2>'+d.k+' · '+z.d+'</h2><div class="muted">'+($('op').value||'')+' · '+outside+' · piano '+floor+'</div></div><div class="price-main">'+E(d.p)+'</div></div><div class="house-grid">'+
+ '<div class="house-k"><div class="l">Questa casa</div><div class="v">'+N(d.ppm)+' €/m²</div><div class="hint">Zona '+N(d.ref)+' · '+P(d.diff)+'</div></div>'+
+ '<div class="house-k"><div class="l">Superficie</div><div class="v">'+d.mq+' m²'+(d.mu?' / '+d.mu+' utili':'')+'</div></div>'+
+ '<div class="house-k"><div class="l">Camere / bagni</div><div class="v">'+beds+' / '+baths+'</div></div>'+
+ '<div class="house-k"><div class="l">Cash al rogito</div><div class="v">'+E(d.purchaseCash)+'</div></div></div><div class="house-tags"><span class="house-tag">Piano '+floor+'</span><span class="house-tag">'+lift+'</span><span class="house-tag">'+outside+'</span><span class="house-tag">Orientamento '+orient+'</span><span class="house-tag '+($('te').value==='0'?'no-balcony':'')+'">'+terrace+'</span>'+(d.agf>0?'<span class="house-tag">Agenzia '+E(d.agf)+' inclusa</span>':'')+'</div></div>';
+}
+function openPanel(id,btn){
+ document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.navbtn').forEach(x=>x.classList.remove('active'));
+ const p=document.getElementById(id);if(p)p.classList.add('active');if(btn)btn.classList.add('active');
+}
+function tabsHtml(){return '<div class="navtabs">'+
+ '<button class="navbtn active" onclick="openPanel(\'p-price\',this)">Prezzo</button>'+
+ '<button class="navbtn" onclick="openPanel(\'p-cash\',this)">Cash</button>'+
+ '<button class="navbtn" onclick="openPanel(\'p-house\',this)">Casa</button>'+
+ '<button class="navbtn" onclick="openPanel(\'p-zone\',this)">Zona</button>'+
+ '<button class="navbtn" onclick="openPanel(\'p-rent\',this)">Affitto</button>'+
+ '<button class="navbtn" onclick="openPanel(\'p-risks\',this)">Rischi</button>'+
+ '<button class="navbtn" onclick="openPanel(\'p-rankings\',this);setTimeout(renderRankings,0)">Aree</button>'+
+ '<button class="navbtn" onclick="openPanel(\'p-final\',this)">Conclusione</button></div>'}
+function renoText(d){
+ const v=n($('st').value)||0;
+ if(v===0)return '<b>Nessun lavoro necessario.</b> L’app non aggiunge ristrutturazione al cash. Restano arredo, personalizzazione e piccoli imprevisti.';
+ if(v<=150)return '<b>Piccoli interventi.</b> Stima '+E(d.lav)+': tinteggiatura, dettagli, manutenzione e personalizzazione.';
+ if(v<=450)return '<b>Restyling parziale.</b> Stima '+E(d.lav)+': alcuni ambienti o impianti, senza rifare completamente la casa.';
+ return '<b>Ristrutturazione completa.</b> Stima '+E(d.lav)+': distribuzione, cucina, bagno, impianti e finiture. Serve preventivo reale.';
+}
+
+
+function commentBox(title,text){return '<div class="section-comment"><b>'+title+'</b><br>'+text+'</div>'}
+function decisionHero(d){let available=d.disp, purchaseOk=d.purchaseCash<=available, totalOk=d.cash<=available; if(purchaseOk&&totalOk)return '<div class="decision good"><div class="dt">Operazione finanziariamente coperta</div><div class="dv">Ti restano '+E(available-d.cash)+'</div><div class="dd">Copri rogito, commissione, imposte e lavori mantenendo la riserva impostata.</div></div>';if(purchaseOk)return '<div class="decision warn"><div class="dt">Puoi comprare la casa</div><div class="dv">Rogito coperto · lavori da pianificare</div><div class="dd">Il cash al rogito è '+E(d.purchaseCash)+' contro '+E(available)+' disponibili. Dopo il rogito restano '+E(available-d.purchaseCash)+'. La ristrutturazione stimata è '+E(d.lav)+', quindi va ridotta, scaglionata o finanziata separatamente. Questo non significa che non puoi permetterti il prezzo di 325.000 €.</div></div>';return '<div class="decision bad"><div class="dt">Il rogito supera il cash disponibile</div><div class="dv">Mancano '+E(d.purchaseCash-available)+'</div><div class="dd">Il confronto riguarda anticipo, imposte, spese e agenzia. La ristrutturazione è mostrata separatamente.</div></div>'}
+function housePanel(d){let floor=$('pi').value||'Da verificare',bal=$('te').value==='2'?'Terrazza':$('te').value==='1'?'Balcone':'Assente';return '<div class="feature-grid"><div class="feature-card"><div class="fl">Piano</div><div class="fv">'+floor+'</div></div><div class="feature-card"><div class="fl">Affaccio</div><div class="fv">'+($('ext').value==='1'?'Esterno':'Interno')+'</div></div><div class="feature-card"><div class="fl">Ascensore</div><div class="fv">'+($('asc').value==='1'?'Sì':'No')+'</div></div><div class="feature-card '+($('te').value==='0'?'alert':'good')+'"><div class="fl">Balcone / terrazza</div><div class="fv">'+bal+'</div></div><div class="feature-card"><div class="fl">Orientamento</div><div class="fv">'+({S:'Sud',SO:'Sud-ovest',O:'Ovest',SE:'Sud-est',E:'Est',N:'Nord',NO:'Nord-ovest',NE:'Nord-est'}[$('or').value]||'Da verificare')+'</div></div><div class="feature-card"><div class="fl">Stato</div><div class="fv">'+$('st').options[$('st').selectedIndex].text+'</div></div></div>'}
+
+
+
+let FUNDING_PRIORITY='ownFirst';
+function setFundingPriority(v){FUNDING_PRIORITY=v;render()}
+function fundingPlan(d){
+ const ownTotal=n($('ca').value)||0, familyTotal=n($('fa').value)||0, reserve=n($('rs').value)||0, ownUsable=Math.max(0,ownTotal-reserve), close=d.purchaseCash;
+ let ownClose,familyClose;
+ if(FUNDING_PRIORITY==='familyFirst'){familyClose=Math.min(familyTotal,close);ownClose=Math.max(0,close-familyClose)}else{ownClose=Math.min(ownUsable,close);familyClose=Math.max(0,close-ownClose)}
+ const ownLeft=Math.max(0,ownUsable-ownClose),familyLeft=Math.max(0,familyTotal-familyClose),poolLeft=ownLeft+familyLeft,worksCovered=Math.min(poolLeft,d.lav),worksGap=Math.max(0,d.lav-poolLeft);
+ return '<div class="funding-box"><b>Come usare i soldi</b><div class="panel-intro">Finanziariamente, i fondi personali e quelli familiari entrano nello stesso pool. Puoi scegliere quale fonte usare prima; cambiano le etichette, non il totale disponibile.</div><label style="font-size:10px;color:#91a4bb">Priorità di utilizzo<select onchange="setFundingPriority(this.value)"><option value="ownFirst" '+(FUNDING_PRIORITY==='ownFirst'?'selected':'')+'>Prima i miei fondi disponibili</option><option value="familyFirst" '+(FUNDING_PRIORITY==='familyFirst'?'selected':'')+'>Prima il contributo di mia madre</option></select></label><div class="funding-grid"><div class="funding-k"><div class="l">Tu al rogito</div><div class="v">'+E(ownClose)+'</div></div><div class="funding-k"><div class="l">Tua madre al rogito</div><div class="v">'+E(familyClose)+'</div></div><div class="funding-k"><div class="l">Residuo per lavori</div><div class="v">'+E(poolLeft)+'</div></div></div><div class="plain-insight">Con questa priorità, dopo il rogito restano '+E(ownLeft)+' dei tuoi fondi utilizzabili e '+E(familyLeft)+' del contributo familiare. I lavori stimati sono '+E(d.lav)+': il pool residuo ne copre '+E(worksCovered)+(worksGap>0?' e restano '+E(worksGap)+' da finanziare, ridurre o scaglionare.':'.')+'</div><div class="source-warning">Il contributo di tua madre può essere usato per rogito o lavori dal punto di vista del budget. La natura giuridica e fiscale va però definita come donazione o prestito e documentata con trasferimenti tracciabili. L’app non presume automaticamente una delle due formule.</div></div>'
+}
+
+
+function buyRecommendation(d){
+ const anomaly=Math.abs(d.diff)>=35, legalRisk=/ideal for an office|ideale? per un ufficio|ideal para oficina/i.test(RAW), purchaseOk=d.purchaseCash<=d.disp;
+ const y=d.yldN, monthlyOk=d.mese<=d.now*1.45, liquidArea=areaScore(d.k)>=55, highWorks=d.lav>d.p*.25;
+ let cls,title,reasons=[],steps=[],confidence='media';
+ if(!purchaseOk){cls='no';title='No: non comprarla a queste condizioni';reasons.push('Il cash al rogito supera quello disponibile di '+E(d.purchaseCash-d.disp)+'.');steps.push('Riduci prezzo o commissione, oppure aumenta l’anticipo disponibile senza intaccare la riserva.');}
+ else if(anomaly||legalRisk){cls='wait';title='Non comprarla ancora';reasons.push('Il prezzo è '+Math.abs(d.diff).toFixed(0)+'% '+(d.diff<0?'sotto':'sopra')+' il riferimento di '+d.k+', uno scarto troppo ampio per una decisione automatica.');if(legalRisk)reasons.push('L’annuncio cita un possibile uso ufficio: destinazione e abitabilità vanno confermate.');steps.push('Chiedi Nota Simple, uso registrale, superficie registrata, abitabilità e conferma scritta del prezzo.');steps.push('Se i documenti tornano, visita e ottieni un preventivo dei lavori prima dell’offerta.');confidence='alta sulla necessità di verifica, bassa sulla convenienza finché mancano i documenti';}
+ else if(highWorks&&!liquidArea){cls='no';title='No: capitale e lavori sono troppo pesanti';reasons.push('I lavori superano il 25% del prezzo e la zona non compensa con sufficiente liquidità per il tuo profilo mobile.');steps.push('Cerca una casa più pronta o in una zona più facile da affittare e rivendere.');}
+ else if(purchaseOk&&monthlyOk&&liquidArea){cls='yes';title='Sì, la comprerei se supera i controlli';reasons.push('Il rogito è coperto mantenendo la riserva.');reasons.push('La zona è compatibile con affitto, rivendita e mobilità futura.');if(y>0)reasons.push('Il rendimento netto stimato è '+y.toFixed(2)+'%.');steps.push('Verifica documenti, condominio e comparabili della stessa via.');steps.push('Definisci l’offerta soltanto dopo aver quantificato lavori e difetti.');}
+ else{cls='wait';title='La terrei in shortlist, senza offrire ancora';reasons.push('L’acquisto è finanziariamente possibile, ma rendimento, costo mensile o liquidità della zona non danno ancora un sì netto.');steps.push('Confronta almeno due immobili simili e usa una visita per validare luce, rumore, distribuzione e lavori.');}
+ return '<div class="buy-call '+cls+'"><div class="bc-k">Decisione</div><div class="bc-t">'+title+'</div><div class="bc-r">'+reasons.join(' ')+'</div><ol>'+steps.map(x=>'<li>'+x+'</li>').join('')+'</ol><div class="confidence">Confidenza: '+confidence+'. La raccomandazione cambia se correggi prezzo, cash, lavori, canone o caratteristiche fisiche.</div></div>';
+}
+function unifiedVerdict(d){
+ const priceAnomaly=d.diff<=-35, purchaseOk=d.purchaseCash<=d.disp, worksOk=d.cash<=d.disp;
+ const legalRisk=/ideal for an office|ideale? per un ufficio|ideal para oficina/i.test(RAW);
+ let cls,title,reason,actions;
+ if(!purchaseOk){
+   cls='red';title='Rogito oltre il cash disponibile';
+   reason='Per firmare servono '+E(d.purchaseCash)+', mentre il cash disponibile dopo la riserva è '+E(d.disp)+'. Mancano '+E(d.purchaseCash-d.disp)+'. I lavori sono esclusi da questo confronto.';
+   actions='Azione: riduci il prezzo, la commissione o l’anticipo richiesto dalla banca. Limite indicativo di prezzo: '+E(d.tettoCash)+'.';
+ }else if(priceAnomaly||legalRisk){
+   cls='amber';title='Finanziariamente possibile, documentalmente anomala';
+   reason='Per te il prezzo è finanziabile senza intaccare la riserva: il rogito richiede '+E(d.purchaseCash)+' e restano '+E(d.disp-d.purchaseCash)+'. Il punto decisivo è proteggere mobilità e liquidità: lo sconto del '+Math.abs(d.diff).toFixed(0)+'% rispetto a '+d.k+' è talmente anomalo che va spiegato prima di impegnare capitale nei lavori.';
+   actions='La mia indicazione: chiedi prima Nota Simple, uso registrale, abitabilità, superficie registrata, disponibilità e prezzo effettivo. Se torna tutto, visita e quantifica i lavori; soltanto dopo definisci l’offerta.';
+ }else if(!worksOk){
+   cls='amber';title='Acquisto coperto, lavori da finanziare';
+   reason='Il rogito è coperto e lascia '+E(d.disp-d.purchaseCash)+'. Il progetto completo richiede altri '+E(d.projectGap)+' oltre al cash disponibile per realizzare subito tutti i lavori stimati.';
+   actions='Azione: conferma un preventivo, riduci o scagliona i lavori, oppure definisci un finanziamento separato.';
+ }else{
+   cls='green';title='Operazione finanziariamente coperta';
+   reason='Il cash disponibile copre rogito e lavori mantenendo la riserva. Restano '+E(d.disp-d.cash)+'.';
+   actions='Azione: completa i controlli documentali e definisci un’offerta basata sui comparabili della stessa via.';
+ }
+ return '<div class="verdict '+cls+'"><div class="kicker">Il punto per te</div><div class="title">'+title+'</div><div class="reason">'+reason+'</div><div class="actions">'+actions+'</div></div>';
+}
+function sectionNote(title,text){return '<div class="section-note"><b>'+title+'</b><br>'+text+'</div>'}
+function priceParameters(d){
+ const zoneCap=d.tettoZona, cashCap=d.tettoCash, bankCap=d.tettoBanca||Infinity;
+ const relevant=Math.min(zoneCap,cashCap,bankCap), limitName=relevant===cashCap?'cash disponibile':relevant===bankCap?'capacità bancaria':'riferimento di zona';
+ return '<div class="param-grid"><div class="param"><div class="pl">Prezzo richiesto</div><div class="pv">'+E(d.p)+'</div><div class="ph">'+N(d.ppm)+' €/m²</div></div><div class="param"><div class="pl">Riferimento annunci</div><div class="pv">'+N(d.ref)+' €/m²</div><div class="ph">Casa '+P(d.diff)+' rispetto alla zona</div></div><div class="param"><div class="pl">Rogiti stimati</div><div class="pv">'+N(d.rog)+' €/m²</div><div class="ph">Casa '+P(d.diffRog)+' rispetto alla stima</div></div></div><div class="logic"><b>Limiti dell’operazione</b><ul><li>Limite cash: '+E(cashCap)+' di prezzo, calcolato su anticipo, imposte, spese e agenzia. I lavori sono separati.</li><li>Limite banca: '+(isFinite(bankCap)?E(bankCap):'non disponibile')+', usando rata massima del 35% del netto mensile.</li><li>Riferimento zona: '+E(zoneCap)+', cioè '+N(d.ref)+' €/m² × '+d.mq+' m². Per uno scarto anomalo questo riferimento non diventa automaticamente un prezzo da offrire.</li></ul>Il limite tecnico più basso è '+E(relevant)+' ed è determinato da '+limitName+'. Non è una raccomandazione di offerta: serve a capire quale vincolo scatta per primo.</div>';
+}
+
+function render(){
+let d=calc();if(!d){$('out').innerHTML='';return}
+$('ed').style.display='block';$('fin').style.display='block';
+let z=d.z,k=d.k;
+
+let sconto=(d.p-d.offri)/d.p*100, cls, act, big, sm;
+let anomalia=d.diff<=-35;
+if(d.purchaseCash>d.disp){cls='no';act='Rogito oltre il cash disponibile';big=E(d.purchaseCash-d.disp);sm='Il confronto include anticipo, imposte, spese e agenzia. I lavori sono separati.';}
+else if(anomalia){cls='mid';act='Verifica prima di offrire';big=E(d.p);sm='Il rogito è finanziariamente coperto. Il prezzo al m² è '+Math.abs(d.diff).toFixed(0)+'% sotto Arapiles: lo scarto è troppo grande per dare un via libera senza controllare uso registrale, superficie, disponibilità e condizioni della vendita.';}
+else if(sconto<=0){cls='go';act='Prezzo finanziariamente sostenibile';big=E(d.p);sm='Il prezzo richiesto rientra nei limiti di cash, banca e zona. Completa i controlli prima dell’offerta.';}
+else if(sconto<=8){cls='go';act='Offri massimo';big=E(d.offri);sm='Parti da '+E(d.offri*0.95)+'. Sopra '+E(d.offri)+' non ha senso: il limite è '+d.vincolo+'.';}
+else if(sconto<=20){cls='mid';act='Solo con sconto';big=E(d.offri);sm='Serve una riduzione di '+Math.round(sconto)+'%, pari a '+E(d.p-d.offri)+'. Il mercato locale indica un possibile margine di '+P(z.nt)+'.';}
+else{cls='no';act='Prezzo oltre il limite';big=E(d.offri);sm='Il prezzo sostenibile è '+E(d.offri)+'. Il limite deriva da '+d.vincolo+', non dalla ristrutturazione.';}
+
+let h='<div class="hero '+cls+'"><div class="act">'+act+'</div><div class="big">'+big+'</div><div class="sm">'+sm+'</div></div>';
+h+=houseSummary(d,z);
+h+=tabsHtml();
+h+='<div class="conclusion-hint">La raccomandazione finale è nella sezione <b>Conclusione</b>, dopo prezzo, cash, casa, zona e rischi.</div>';
+h+='<div class="toc"><span>1. Soldi</span><span>2. Casa</span><span>3. Zona</span><span>4. Decisione</span></div>';
+h+='<div class="step">1. Soldi: quanto serve e cosa succede se parti</div>';
+
+
+// ===== PANELS: ONE SECTION AT A TIME =====
+h+='<section id="p-price" class="panel active"><div class="panel-card"><div class="panel-title">Prezzo e riferimenti</div><div class="panel-intro">Confronto tra richiesta, mercato del barrio, rogiti stimati e limiti finanziari. I numeri descrivono vincoli diversi e non vengono più fusi in un unico “tetto massimo”.</div>';
+h+=priceParameters(d);
+h+=propertyAreaView(d);
+h+=sectionNote('Lettura','Il prezzo richiesto è '+E(d.p)+'. Il riferimento '+d.k+' è '+N(d.ref)+' €/m² e la casa è '+P(d.diff)+' rispetto a tale valore. Quando lo scarto supera il 35% in valore assoluto, l’app classifica l’annuncio come anomalo e richiede verifica documentale prima di suggerire qualsiasi offerta.');
+h+='</div></section>';
+
+h+='<section id="p-cash" class="panel"><div class="panel-card"><div class="panel-title">Cash, mutuo e costi mensili</div>';
+h+='<div class="nums">';
+h+='<div class="n '+(d.cash<=d.mio?'g':d.cash<=d.disp?'y':'r')+'" onclick="this.classList.toggle(\'open\')"><div class="q">?</div><div class="lab">Cash totale progetto'+(d.agf>0?' · agenzia inclusa':'')+'</div><div class="val">'+Ek(d.cash)+'</div><div class="hint">'+
+(d.daMamma>0?'di cui '+Ek(d.daMamma)+' da tua madre':'tutto tuo, ti restano '+Ek(d.mio-d.cash))+'</div>'+
+'<div class="exp">Sono i soldi che devi avere <b>sul conto il giorno della firma</b>. La banca presta l\'80%, il resto lo metti tu.'+
+'<span class="f">Anticipo 20%        '+E(d.ant)+'\n'+(d.nuovo?'IVA 10% + AJD 0,75% ':'ITP 6%              ')+E(d.tax)+'\nNotaio, registro    '+E(d.spese)+'\n'+(d.agf>0?'Agenzia             '+E(d.agf)+'\n':'')+'Lavori              '+E(d.lav)+'\n────────────────────\nTOTALE              '+E(d.cash)+'</span>'+
+'Tu hai '+E(d.mio)+': i tuoi '+E(d.ca)+' meno '+E(d.rs)+' di riserva. '+(d.daMamma>0?'Mancano <b>'+E(d.daMamma)+'</b>, li chiedi a tua madre che ne ha '+E(d.fa)+'.':'Ti bastano i tuoi.')+
+(d.agf===0?'<br><br>La commissione di agenzia non c\'è: in Spagna la paga il venditore.':'')+'</div></div>';
+
+h+='<div class="n '+(d.extra<=0?'g':d.extra<=400?'y':'r')+'" onclick="this.classList.toggle(\'open\')"><div class="q">?</div><div class="lab">Al mese</div><div class="val">'+E(d.mese)+'</div><div class="hint">'+
+(d.extra>=0?'+'+E(d.extra)+' rispetto ai tuoi '+E(d.now):E(-d.extra)+' meno di adesso')+'</div>'+
+'<div class="exp">Quanto esce dal conto ogni mese da proprietario.'+
+'<span class="f">Rata mutuo          '+E(d.m)+'\nComunidad           '+E(d.com)+'\nIBI                 '+E(d.ibi)+'\nAssicurazione       '+E(d.ass)+'\nManutenzione        '+E(d.man)+'\n────────────────────\nTOTALE              '+E(d.mese)+'</span>'+
+'Di questa rata, circa <b>'+E(d.m-d.mutuo*(d.tin/100)/12)+' al mese</b> nel primo anno non è una spesa: è capitale che riduce il tuo debito e torna tuo quando vendi. Il costo vero è quindi circa '+E(d.mese-(d.m-d.mutuo*(d.tin/100)/12))+'.</div></div>';
+
+let yr1=rank(byYld,k), yq=rank(qByYld,k);
+h+='<div class="n '+(d.cf>=0?'g':d.cf>=-200?'y':'r')+'" onclick="this.classList.toggle(\'open\')"><div class="q">?</div><div class="lab">Se te ne vai da Madrid</div><div class="val">'+(d.cf>=0?'+':'')+E(d.cf)+'</div><div class="hint">'+
+(d.cf>=0?'affitto la copre, sei libero':'ti costa '+E(-d.cf)+'/mese anche affittata')+'</div>'+
+'<div class="exp">Se il lavoro ti porta fuori Madrid e la affitti, questo ti resta in tasca ogni mese.'+
+'<span class="f">Affitto ('+d.rpm+' €/m²)   '+E(d.aff)+'\nmeno 6% sfitto      -'+E(d.aff*0.06)+'\nmeno spese fisse    -'+E(d.com+d.ibi+d.ass+d.man)+'\nmeno rata mutuo     -'+E(d.m)+'\n────────────────────\nTI RESTA            '+(d.cf>=0?'+':'')+E(d.cf)+'</span>'+
+'<b>Rendimento lordo '+d.yldL.toFixed(2)+'%</b>, netto operativo '+d.yldN.toFixed(2)+'%. La media di Madrid è '+MAD_YLD.toFixed(2)+'%.<br><br>'+
+k+' è il <b>'+ord(yr1)+' barrio su '+ALL.length+'</b> per rendimento da affitto'+(z.v26>=6000?', il <b>'+ord(yq)+' su '+QUAL.length+'</b> tra quelli sopra 6.000 €/m²':'')+'.<br><br>'+
+(d.yldL>=5?'Sopra il 5%: qui compri reddito.':d.yldL>=4?'Tra 4 e 5%: equilibrio tra reddito e qualità.':d.yldL>=3.5?'Tra 3,5 e 4%: paghi soprattutto la posizione.':'Sotto il 3,5%: stai comprando status, non reddito.')+'</div></div>';
+
+let pRank=rank(byPr,k);
+h+='<div class="n '+(d.diffRog<=0?'g':d.diffRog<=10?'y':'r')+'" onclick="this.classList.toggle(\'open\')"><div class="q">?</div><div class="lab">Prezzo vs rogiti reali</div><div class="val">'+P(d.diffRog)+'</div><div class="hint">'+
+N(d.ppm)+' vs '+N(d.rog)+' €/m² di chiusura</div>'+
+'<div class="exp">Il confronto che conta non è con gli <b>annunci</b>, ma con i prezzi di <b>rogito</b>.'+
+'<span class="f">Questa casa        '+N(d.ppm)+' €/m²\nAnnunci in '+k.slice(0,8)+'   '+N(d.ref)+' €/m²  ('+P(d.diff)+')\nRogiti reali       '+N(d.rog)+' €/m²  ('+P(d.diffRog)+')</span>'+
+'In questa zona si chiude mediamente <b>'+P(z.nt)+'</b> rispetto al richiesto. '+
+(z.nt<=-25?'È uno scarto altissimo: hai molto margine di trattativa.':z.nt<=-15?'Scarto significativo, c\'è spazio per trattare.':z.nt<0?'Scarto contenuto: il mercato qui è già realistico.':'Qui si chiude <b>sopra</b> il richiesto: operazioni prime fuori dai portali, margine zero.')+
+'<br><br>'+k+' è il <b>'+ord(ALL.length-pRank+1)+' più costoso</b> dei '+ALL.length+' barrios. Quindi è '+((ALL.length-pRank+1)<=Math.ceil(ALL.length*.25)?'nel 25% più caro di Madrid':'fuori dal 25% più caro')+'. Madrid media '+N(MAD_V)+' €/m².</div></div>';
+h+='</div>';
+
+
+h+='<div class="money-split"><div class="money-panel"><h4>Cash al rogito</h4><div class="money-total good">'+E(d.purchaseCash)+'</div><div class="small">Anticipo, imposte, spese e agenzia.</div></div><div class="money-panel"><h4>Lavori stimati</h4><div class="money-total warn">'+E(d.lav)+'</div><div class="small">Budget successivo, modificabile e finanziabile separatamente.</div></div></div>'+fundingPlan(d)+'<div class="renovation-call">'+renoText(d)+'</div>'+sectionNote('Lettura del cash','Il prezzo è '+E(d.p)+'. Il cash al rogito è '+E(d.purchaseCash)+'. Il totale progetto di '+E(d.cash)+' include anche '+E(d.lav)+' di lavori. Il contributo familiare e i tuoi fondi possono essere ripartiti con il selettore qui sopra.')+'</div></section>';
+
+h+='<section id="p-house" class="panel"><div class="panel-card"><div class="panel-title">Casa: caratteristiche fisiche</div>';
+h+=editableHouse(d);
+h+=housePanel(d);
+let facts=adFacts(RAW);if(facts.length){h+='<div class="sec">Cosa emerge dall’annuncio</div><div class="fact-grid">';facts.forEach(f=>h+='<div class="fact '+(f.kind||'')+'"><b>'+f.title+'</b><span>'+f.text+'</span></div>');h+='</div>';}
+h+='<div class="renovation-call">'+renoText(d)+'</div>';
+h+=sectionNote('Lettura della casa',$('te').value==='0'?'Piano '+($('pi').value||'da verificare')+', '+($('ext').value==='1'?'affaccio esterno':'affaccio interno')+' e ascensore sono positivi. L’assenza di balcone o terrazza riduce comfort e attrattività rispetto ad alternative con spazio esterno.':'Piano, luce, ascensore e spazio esterno incidono direttamente su vivibilità, affitto e rivendita.');
+h+='</div></section>';
+h+='<section id="p-zone" class="panel"><div class="panel-card"><div class="panel-title">Zona e profilo socioeconomico</div>';
+let pills='';if(z.ren){let rr=rank(byRen,k);let rl=z.ren>=70000?'g':z.ren>=40000?'':'y';pills+='<span class="pill '+rl+'">Reddito '+N(z.ren/1000)+'k € · '+ord(rr)+' su '+byRen.length+'</span>'}if(z.sec!=null){let sl=z.sec<=200?'g':z.sec<=400?'':'r';pills+='<span class="pill '+sl+'">'+z.sec+' interventi polizia/anno nel distretto</span>'}pills+='<span class="pill">'+z.amin+' min da Alonso Martínez</span>';if(z.mtr&&z.mtr!=='—')pills+='<span class="pill">Metro '+z.mtr+'</span>';
+h+='<div class="al b zone-only"><b>'+(z.tag||'')+'</b><span>'+(z.txt||'')+'</span><div class="bar">'+pills+'</div></div>';
+h+=marketRelation(k);h+=deepZone(k,z);h+=socioCard(k,z);
+h+=sectionNote('Lettura della zona',k+' ha un riferimento di '+N(d.ref)+' €/m². Questa casa è a '+N(d.ppm)+' €/m², cioè '+P(d.diff)+' rispetto agli annunci della zona. '+(Math.abs(d.diff)>=35?'Lo scarto è eccezionale e richiede verifica di superficie, uso registrale, prezzo e disponibilità.':'Lo scarto è compatibile con differenze di piano, stato, luce, ascensore e microzona.'));
+
+// ===== LETTURA DEL BARRIO IN LINGUAGGIO DIRETTO =====
+let dl=inDist(k),dlPr=dl.slice().sort((a,b)=>B[a].v26-B[b].v26),cheapPos=dlPr.indexOf(k)+1,expensivePos=dl.length-cheapPos+1;
+let growth=z.ya!=null?z.ya:(z.c3||0), growthText=growth>=12?'molto forte':growth>=5?'moderata':growth>=0?'debole':'negativa';
+h+='<div class="sec">Cosa significa per te</div>';
+h+='<div class="plain-insight"><b>Prezzo nel distretto.</b> '+(cheapPos===1?k+' è il barrio meno caro di '+z.d+'.':cheapPos===2?k+' è il secondo barrio meno caro di '+z.d+'.':expensivePos===1?k+' è il barrio più caro di '+z.d+'.':k+' è il '+ord(expensivePos)+' più caro di '+z.d+'.')+' Il riferimento è '+N(z.v26)+' €/m².</div>';
+h+='<div class="plain-insight"><b>Direzione del mercato.</b> I prezzi richiesti sono cambiati del '+P1(growth)+' nell’ultimo anno: una crescita '+growthText+'. Questo dato serve a capire il momento del mercato, non a prevedere automaticamente il futuro.</div>';
+h+='<div class="plain-insight"><b>Compatibilità con la tua vita.</b> '+k+' è a circa '+z.amin+' minuti a piedi da Alonso Martínez'+(z.mtr&&z.mtr!=='—'?' e ha metro '+z.mtr:'')+'. Il rendimento teorico della zona è '+(z.r26*12/z.v26*100).toFixed(2)+'%. Per te il confronto utile è tra centralità, facilità di affitto, cash immobilizzato e qualità della singola casa.</div>';
+
+// ===== COSE DA SAPERE =====
+let A=[];
+if(/non include[^\n]{0,250}(?:agenzia|intermediazione immobiliare)|no incluye[^\n]{0,250}(?:agencia|intermediaci[oó]n)/i.test(RAW))A.push(['r','Agenzia esclusa dal prezzo','L’annuncio non dice quanto costa. L’app stima '+E(d.agf)+' ('+$('ag').value+'%), ma devi chiedere importo esatto IVA inclusa e cosa comprende. Finché non lo sai, il cash totale non è definitivo.']);
+if(d.mu&&d.eff<70)A.push(['r','Dentro è molto più piccolo','L\'annuncio dice '+d.mq+' m² ma quelli veri sono '+d.mu.toFixed(0)+'. Stai pagando '+N(d.p/d.mu)+' €/m² reali, non '+N(d.ppm)+'.']);
+if(!d.mu&&d.nuovo)A.push(['y','Chiedi i metri veri','Nella nuova costruzione i m² includono muri e parti comuni. Fatti dare la superficie útil dalla planimetria.']);
+if(d.nuovo)A.push(['y','Il prezzo non è il prezzo','Nuova costruzione paga IVA 10% + AJD 0,75%, non ITP. Sono '+Ek(d.tax)+' che probabilmente non sono nei '+E(d.p)+'. Chiedi per iscritto se è IVA inclusa.']);
+if(d.coop)A.push(['r','È una cooperativa, non una vendita','Diventi socio-promotore: se i costi salgono paghi tu. Prima di firmare vuoi licenza concessa, terreno comprato, prezzo chiuso e garanzia bancaria sugli anticipi.']);
+let anno=n($('dl').value);
+if(anno&&anno>2026){let a=anno-2026;A.push(['r','Non risolve il tuo problema adesso','Consegna nel '+anno+'. Altri '+a+' anni a '+E(d.now)+'/mese nella stanza, cioè '+Ek(d.now*12*a)+' buttati mentre aspetti.']);}
+let ori=$('or').value;
+if(ori==='N'||ori==='NE'||ori==='NO')A.push(['y','Orientamento a nord','Poco sole diretto tutto l\'anno. D\'inverno freddo e buio, bolletta più alta. Sulla rivendita conta.']);
+else if(ori==='O'||ori==='SO')A.push(['g','Bella luce pomeridiana','Ovest: sole e tramonti dal pomeriggio. D\'estate a Madrid scalda parecchio senza buone tapparelle.']);
+else if(ori==='S')A.push(['g','Orientamento sud','Il migliore a Madrid: sole tutto il giorno d\'inverno, controllabile d\'estate. Aumenta il valore.']);
+let af=$('af').value;
+if(af==='traf')A.push(['r','Dà su strada trafficata','Rumore e polvere costanti. Dormire con le finestre aperte diventa impossibile. Sconta il prezzo e verifica i doppi vetri.']);
+else if(af==='patio')A.push(['y','Affaccia sul cortile','Silenzioso ma poca luce, vista sui vicini. Il canone di affitto scende del 5-10%.']);
+let ann=n($('an').value);
+if(ann&&ann<1980)A.push(['y','Edificio del '+ann,'Prima del 1980: impianti elettrici e tubature probabilmente da rifare, isolamento scarso. Chiedi l\'ITE e se sono stati rifatti.']);
+let ene=$('en').value;
+if(ene&&'EFG'.includes(ene))A.push(['y','Classe energetica '+ene,'Consumi alti: a Madrid significa 80-150 €/mese in più rispetto a una classe B, tra aria condizionata d\'estate e riscaldamento d\'inverno.']);
+if($('ac').value==='0')A.push(['y','Senza aria condizionata','A Madrid non è un lusso, serve da giugno a settembre. Installarla costa 2.500-4.000 €.']);
+if(z.amin>45)A.push(['y','È lontano da casa tua','Da qui ad Alonso Martínez sono '+z.amin+' minuti a piedi. Vivi a Chamberí: cambia la vita che fai, non solo l\'indirizzo.']);
+if(/turistico|movida/i.test(z.tag||''))A.push(['y','Zona turistica o di movida','Bello da visitare, faticoso da abitare: rumore nel weekend, vicini che cambiano, affitti brevi nel palazzo. Verifica quanti appartamenti turistici ci sono nello stabile.']);
+if($('asc').value==='0'){let pia=n($('pi').value);A.push(['r','Senza ascensore'+(pia?' al '+pia+'º piano':''),'Perdi una fetta di inquilini e compratori. '+(pia&&pia>=3?'Al '+pia+'º piano è un problema serio sulla rivendita.':'Conta anche ai piani bassi.')]);}
+if($('ext').value==='0')A.push(['y','Interno','Meno luce, canone più basso, rivendita più lenta.']);
+if($('te').value==='2')A.push(['g','Ha una terrazza','A Madrid vale molto: la usi 8 mesi l\'anno. Aumenta canone e prezzo di rivendita del 5-10%.']);
+if($('ga').value==='1')A.push(['g','Garage incluso','In centro vale 25-40k di suo, e affitta a 100-150 €/mese se non ti serve.']);
+if(d.lav>20000)A.push(['y','Lavori da '+Ek(d.lav),'È una stima a m². Prima di offrire fatti fare un preventivo vero, può raddoppiare.']);
+if(d.tettoBanca&&d.offri===d.tettoBanca)A.push(['y','Ti blocca la banca','Con '+E(d.inc)+' netti al mese arrivi a '+Ek(d.tettoBanca)+'. I soldi ci sarebbero, la rata no.']);
+if(z.lvl==='D')A.push(['y','Prezzo di zona approssimativo','Per '+k+' non ho il dato del singolo barrio, uso quello del distretto '+z.d+'. Verifica con 3 annunci simili nella stessa via e correggi nel campo override.']);
+if(A.length){h+='<div class="step">4. Rischi e verifiche decisive</div>';A.forEach(a=>h+='<div class="al '+a[0]+'"><b>'+a[1]+'</b><span>'+a[2]+'</span></div>')}
+
+// ===== DA CHIEDERE =====
+let Q=[];
+if(d.coop)Q=['La <b>licenza di obra</b> è concessa? Mostratemela.','Il <b>terreno</b> è già di proprietà della cooperativa e pagato?','Il prezzo è <b>chiuso</b> o posso ricevere richieste di soldi extra?','I soldi che anticipo hanno <b>garanzia bancaria</b> individuale?','Qual è il <b>piano pagamenti</b> fino alla consegna?','Se esco dalla cooperativa, <b>riprendo tutto</b>?','C\'è una <b>penale</b> se consegnate in ritardo?'];
+else if(d.nuovo)Q=['Il prezzo è <b>IVA inclusa</b> o esclusa?','<b>Superficie útil</b> esatta dalla planimetria?','Data di <b>consegna</b> e penali per ritardo?','Cosa comprende la <b>memoria di qualità</b>?'];
+else Q=['<b>Chi è il proprietario e ci sono debiti?</b> Chiedi la Nota Simple: mostra proprietà, ipoteche, pignoramenti e superficie registrata.','<b>L’edificio ha superato i controlli?</b> Chiedi la ITE e se sono previsti lavori straordinari da pagare, chiamati derramas.','<b>Il condominio ha problemi o spese future?</b> Leggi i verbali delle ultime riunioni e controlla morosità, liti e lavori votati.','<b>Su quale valore pagherai l’ITP?</b> Verifica il valore catastale di riferimento: se supera il prezzo, l’imposta può essere calcolata sul valore superiore.','<b>Da quanto tempo è davvero in vendita?</b> Chiedi perché vendono, quante offerte hanno rifiutato e se il prezzo è già sceso.','<b>Quanta luce entra davvero?</b> Visita al mattino e nel tardo pomeriggio, controllando tutte le stanze.','<b>Com’è il rumore?</b> Torna nella via la sera e nel weekend, con le finestre aperte.'];
+h+='<div class="step">6. Domande prima di offrire</div>';Q.forEach(q=>h+='<div class="ask">'+q+'</div>');
+
+
+h+=sectionNote('Lettura dei rischi','Questi controlli non sono formalità: possono cambiare prezzo, mutuo, tempi e convenienza dell’operazione. Per questo annuncio, uso registrale e superficie sono prioritari perché viene presentato come ideale per ufficio.');
+h+='</div></section>';
+
+h+='<section id="p-rankings" class="panel"><div class="panel-card"><div class="panel-title">Classifica completa dei barrios</div>'+rankingsHtml()+'</div></section>';
+
+h+='<section id="p-final" class="panel"><div class="panel-card"><div class="panel-title">Conclusione</div>'+
+ buyRecommendation(d)+sectionNote('Perché questa è la conclusione','Per te contano quattro cose insieme: uscire dalla stanza condivisa, mantenere una riserva liquida, conservare libertà se il lavoro ti porta fuori Madrid e comprare una casa facilmente affittabile o rivendibile. La decisione combina: cash al rogito e riserva, anomalie documentali, lavori, costo mensile, rendimento netto, facilità di affitto e rivendita. Il risultato è una risposta esplicita: sì, no oppure non ancora, con i motivi e i passaggi che possono cambiare il giudizio.');
+// ===== NUMERI =====
+h+='<details class="c"><summary>7. Dettaglio completo dei calcoli</summary>'+
+'<div class="row"><b>Anticipo 20%</b><span>'+E(d.ant)+'</span></div>'+
+'<div class="row"><b>'+(d.nuovo?'IVA + AJD':'ITP 6%')+'</b><span>'+E(d.tax)+'</span></div>'+
+'<div class="row"><b>Notaio, registro, gestoría</b><span>'+E(d.spese)+'</span></div>'+
+(d.agf>0?'<div class="row"><b>Agenzia</b><span>'+E(d.agf)+'</span></div>':'')+
+'<div class="row"><b>Lavori</b><span>'+E(d.lav)+'</span></div>'+
+'<div class="row"><b>Investimento totale</b><span>'+E(d.inv)+'</span></div>'+
+'<div class="row"><b>Mutuo</b><span>'+E(d.mutuo)+'</span></div>'+
+'<div class="row"><b>Rata</b><span>'+E(d.m)+'/mese</span></div>'+
+'<div class="row"><b>Interessi totali su '+d.hy+' anni</b><span>'+E(d.intTot)+'</span></div>'+
+'<div class="row"><b>Affitto stimato</b><span>'+E(d.aff)+'/mese</span></div>'+
+'<div class="row"><b>Rendimento lordo / netto</b><span>'+d.yldL.toFixed(2)+'% / '+d.yldN.toFixed(2)+'%</span></div>'+
+'<div class="row"><b>Tetto da prezzo zona</b><span>'+E(d.tettoZona)+'</span></div>'+
+'<div class="row"><b>Tetto da cash</b><span>'+E(d.tettoCash)+'</span></div>'+
+(d.tettoBanca?'<div class="row"><b>Tetto da banca</b><span>'+E(d.tettoBanca)+'</span></div>':'')+
+'<div class="row"><b>'+k+' 2024 (tuo file)</b><span>'+N(z.v24)+' €/m²</span></div>'+
+'<div class="row"><b>'+k+' 2026 annunci</b><span>'+N(z.v26)+' €/m² <span class="tag">'+(z.lvl==='B'?'barrio':'distretto')+'</span></span></div>'+
+'<div class="row"><b>'+k+' 2026 rogiti</b><span>'+N(d.rog)+' €/m²</span></div>'+
+'<div class="row"><b>Affitto zona</b><span>'+z.r26+' €/m²/mese</span></div>'+
+(z.c3!=null?'<div class="row"><b>CAGR 3 anni</b><span>'+z.c3.toFixed(1)+'%</span></div>':'')+
+(z.ya!=null?'<div class="row"><b>Variazione 2026</b><span>'+P1(z.ya)+'</span></div>':'')+
+(z.ren?'<div class="row"><b>Reddito medio</b><span>'+N(z.ren)+' €/anno</span></div>':'')+
+'</details>';
+
+
+h+='</div></section>';
+let pr='Valuta questa casa a Madrid. Sono italiano, 36 anni, vivo a Chamberí in una stanza a '+E(d.now)+'/mese con 4 persone e voglio uscirne. Residente fiscale in Spagna con Ley Beckham fino al 2029, 85.000 lordi/anno (circa '+E(d.inc)+' netti/mese). Voglio una casa in cui vivere che resti affittabile e rivendibile se il lavoro mi porta fuori Madrid.\n\n'+
+'SOLDI: '+E(d.mio)+' miei disponibili, '+E(d.fa)+' da mia madre, BTP 60.000 € in scadenza ottobre 2028 che preferisco non toccare.\n\n'+
+'CASA: '+k+' ('+z.d+'), '+z.amin+' min a piedi da Alonso Martínez. '+E(d.p)+' per '+d.mq+' m²'+(d.mu?' dichiarati ma '+d.mu+' m² utili reali':'')+'. '+($('cam').value||'?')+' camere, '+($('bag').value||'?')+' bagni, piano '+($('pi').value||'?')+'. '+$('op').value+(d.coop?', cooperativa':'')+(anno?', consegna '+anno:'')+'. Orientamento '+(ori||'?')+', affaccio '+(af||'?')+', ascensore '+($('asc').value==='1'?'sì':'no')+', AC '+($('ac').value==='1'?'sì':'no')+(ann?', costruito '+ann:'')+(ene?', classe '+ene:'')+'.\n\n'+
+'MIEI CONTI: cash al rogito '+E(d.purchaseCash)+' (di cui '+E(d.daMamma)+' da mia madre), mutuo '+E(d.mutuo)+', rata '+E(d.m)+', costo mensile '+E(d.mese)+' contro i '+E(d.now)+' di adesso. Se la affitto: '+E(d.aff)+'/mese, cash flow '+(d.cf>=0?'+':'')+E(d.cf)+', rendimento lordo '+d.yldL.toFixed(2)+'%. Prezzo massimo che mi sono dato: '+E(d.offri)+', me lo limita '+d.vincolo+'.\n\n'+
+'ZONA: annunci a '+N(d.ref)+' €/m², rogiti reali a '+N(d.rog)+' ('+P(z.nt)+'), questa casa '+N(d.ppm)+' €/m². Nel 2024 il barrio stava a '+N(z.v24)+'. Crescita '+(z.ya!=null?P1(z.ya):'?')+' nell\'ultimo anno. Profilo socioeconomico: reddito medio '+(z.ren?N(z.ren)+' €/anno':'?')+'. '+(z.sec?z.sec+' interventi polizia/anno nel distretto.':'')+'\n\n'+
+'FAMMI QUESTO:\n1. Cerca online questa via e questo barrio: annunci simili adesso, prezzi di rogito reali, affitti veri per questo taglio.\n2. Dimmi se il prezzo ha senso e che sconto è realistico.\n3. Controlla i miei conti e dimmi dove sbaglio.\n4. Com\'è davvero la zona: rumore, sicurezza, servizi, che gente ci vive, se è turistica.\n5. Rischi: ITE, derramas, valore catastale, licenze.\n6. Dammi 2-3 alternative migliori.\n7. Verdetto secco: la visito, offro quanto, o lascio perdere.\n\nSii diretto. Se è mediocre dillo subito.\n\n--- ANNUNCIO ---\n'+RAW;
+
+h+='<div class="c"><button class="p" id="cp" style="width:100%">Copia tutto per chiedere all\'AI</button><textarea id="hid" style="position:absolute;left:-9999px;top:0"></textarea></div>';
+$('out').innerHTML=h;
+
+$('cp').onclick=function(){
+let ta=$('hid');ta.value=pr;let ok=false;
+try{ta.style.position='fixed';ta.style.left='0';ta.style.top='0';ta.style.opacity='0';
+ta.focus();ta.select();ta.setSelectionRange(0,999999);ok=document.execCommand('copy');
+ta.style.position='absolute';ta.style.left='-9999px'}catch(e){ok=false}
+if(ok){this.textContent='Copiato — incollalo in chat';setTimeout(()=>this.textContent="Copia tutto per chiedere all'AI",2200);return}
+if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(pr).then(()=>{
+this.textContent='Copiato — incollalo in chat';setTimeout(()=>this.textContent="Copia tutto per chiedere all'AI",2200)});return}
+ta.style.position='static';ta.style.left='auto';ta.style.height='200px';ta.style.opacity='1';
+this.textContent='Selezionalo e copialo a mano ↓';ta.focus();ta.select()};
+}
+
+let RAW='';
+$('go').onclick=()=>{
+ const ps=$('parseStatus');
+ try{
+  RAW=$('t').value;let o=parse(RAW);
+  Object.entries(o).forEach(([kk,v])=>{if(!kk.startsWith('_')&&$(kk))$(kk).value=v});
+  const missing=[];if(!o.p)missing.push('prezzo');if(!o.mq)missing.push('m²');if(!o.b)missing.push('barrio');
+  if(missing.length){ps.className='parse-status warn';ps.textContent='Ho letto solo una parte dell’annuncio. Mancano: '+missing.join(', ')+'. Correggi il dato nel pannello e rilancia l’analisi.';return;}
+  else{ps.className='parse-status ok';ps.innerHTML='Letto: <b>'+E(o.p)+'</b> · <b>'+o.mq+' m²</b> · <b>'+o.b+'</b>'+(o.pi?' · piano '+o.pi:'')+(o.st==='850'?' · ristrutturazione completa':'')+'. Se il barrio o un dato non coincidono, correggili nella sezione Casa o nel pannello dati.';}
+  render();
+  if($('out').innerHTML) $('out').scrollIntoView({behavior:'smooth'});
+ }catch(err){
+  console.error(err);ps.className='parse-status err';ps.textContent='Errore durante l’analisi: '+err.message+'. I dati incollati restano disponibili: puoi correggere i campi senza perdere il testo.';
+ }
+};
+$('cl').onclick=()=>{['t','p','mq','mu','cam','bag','cm','ro','dl','pi','an'].forEach(i=>$(i).value='');$('out').innerHTML='';$('parseStatus').className='parse-status';$('parseStatus').textContent='';$('ed').style.display='none';$('fin').style.display='none'};
+['p','mq','mu','b','op','cam','bag','st','asc','ext','co','cm','ro','dl','ca','fa','rs','inc','tin','yr','now','pz','pi','an','en','ac','or','af','te','ga','ag','age','hy'].forEach(i=>{if($(i)){$(i).oninput=render;$(i).onchange=render}});
+</script></body></html>
